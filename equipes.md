@@ -10,7 +10,6 @@ Este documento define a distribuição oficial dos alunos, lideranças técnicas
 | :--- | :--- | :--- |
 | **André** | Docente / Orientador | Direcionamento pedagógico, validação de arquitetura e avaliação de entregas |
 | **Deivison** | Docente / Orientador | Acompanhamento técnico, mentoria de engenharia e gestão de escopo |
-| **Diego Rossi** | Docente / Orientador | Gestão acadêmica, suporte em requisitos e alinhamento institucional |
 
 ---
 
