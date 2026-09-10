@@ -1,0 +1,11 @@
+{
+  "notice": "GENERATED FILE — DO NOT EDIT",
+  "generated_at": "2026-09-10",
+  "status": "Draft",
+  "groups": {
+    "AUTH": ["SPEC-AUTH-001", "SPEC-AUTH-002", "SPEC-AUTH-003", "SPEC-AUTH-004"],
+    "PI": ["SPEC-PI-001", "SPEC-PI-002", "SPEC-PI-003", "SPEC-PI-004"],
+    "EXT": ["SPEC-EXT-001", "SPEC-EXT-002", "SPEC-EXT-003"],
+    "PORTAL": ["SPEC-PORTAL-001", "SPEC-PORTAL-002"]
+  }
+}

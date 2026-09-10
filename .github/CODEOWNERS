@@ -1,0 +1,23 @@
+# Governança e produto
+/_KB/governance/       @UniSENAI-Sorocaba/product-governance
+/_KB/product/          @UniSENAI-Sorocaba/product-owners
+/_KB/requirements/     @UniSENAI-Sorocaba/product-owners
+/_KB/specs/            @UniSENAI-Sorocaba/product-owners @UniSENAI-Sorocaba/technical-leads
+/_KB/must-haves/       @UniSENAI-Sorocaba/product-governance @UniSENAI-Sorocaba/technical-leads
+
+# Autoridade técnica
+/_KB/architecture/     @UniSENAI-Sorocaba/technical-leads
+/_KB/contracts/        @UniSENAI-Sorocaba/technical-leads
+/_KB/engineering/      @UniSENAI-Sorocaba/technical-leads
+/_KB/security/         @UniSENAI-Sorocaba/quality-security
+/_KB/operations/       @UniSENAI-Sorocaba/cloud-devops
+/_KB/agents/           @UniSENAI-Sorocaba/product-governance @UniSENAI-Sorocaba/technical-leads
+/.github/              @UniSENAI-Sorocaba/cloud-devops @UniSENAI-Sorocaba/quality-security
+
+# Backlogs
+/backlogs/backend.md            @UniSENAI-Sorocaba/backend
+/backlogs/frontend.md           @UniSENAI-Sorocaba/frontend
+/backlogs/database.md           @UniSENAI-Sorocaba/database
+/backlogs/cloud-devops.md       @UniSENAI-Sorocaba/cloud-devops
+/backlogs/quality-security.md   @UniSENAI-Sorocaba/quality-security
+/backlogs/product-governance.md @UniSENAI-Sorocaba/product-owners

@@ -1,0 +1,7 @@
+{
+  "notice": "GENERATED FILE — DO NOT EDIT",
+  "generated_at": "2026-09-10",
+  "source": "governance/squads.md",
+  "counts": {"backend": 9, "frontend": 6, "database": 6, "cloud_devops": 6, "quality_security": 7},
+  "product": {"lpo": "Luciano Menezes Júnior", "po": "Fellipe Raszejas"}
+}

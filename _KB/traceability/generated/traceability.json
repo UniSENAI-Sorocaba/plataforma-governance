@@ -1,0 +1,7 @@
+{
+  "notice": "GENERATED FILE — DO NOT EDIT",
+  "generated_at": "2026-09-10",
+  "flow": "EPIC -> REQ -> SPEC -> MH/ADR/CONTRACT -> Issue -> PR -> Evidence",
+  "legacy_aliases": {"epics": "EP01..EP08", "stories": "US01..US18", "adrs": "ADR-001..ADR-005"},
+  "operational_source": "GitHub Project"
+}

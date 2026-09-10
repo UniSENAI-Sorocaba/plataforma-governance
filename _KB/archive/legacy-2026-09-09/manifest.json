@@ -1,0 +1,397 @@
+﻿[
+    {
+        "path":  "00-index/glossary.md",
+        "sha256":  "3ae107927bae956f14a27feb5e85416bb66ada2d67f3a9c27c1c2e447d185130",
+        "bytes":  5701
+    },
+    {
+        "path":  "00-index/navigation.md",
+        "sha256":  "0858053f84f8af6373b7ba7d087551cef7a1e3681df501c8bbbb9987a55137ca",
+        "bytes":  9716
+    },
+    {
+        "path":  "00-index/open-issues.md",
+        "sha256":  "7d0f63cbdb78e6fac97b4ba3373b1879f71190e5f7ffd2e0d6c7654b4e98e0c9",
+        "bytes":  4084
+    },
+    {
+        "path":  "00-index/README.md",
+        "sha256":  "6c7db4aa975d7e079c6bdeaea8f4da967d886168f28ace7dafda81d8c41ea4cc",
+        "bytes":  4768
+    },
+    {
+        "path":  "01-product/modules.md",
+        "sha256":  "11601d740bea8eaf7898d371687d24ebc2be3bbc558055cc0e99bc034f7877a4",
+        "bytes":  5401
+    },
+    {
+        "path":  "01-product/mvp.md",
+        "sha256":  "2570dde9e5bbe589d38fdeddfe544c29e9443b41a8b2a8f9fc039656a6d8262f",
+        "bytes":  7191
+    },
+    {
+        "path":  "01-product/personas.md",
+        "sha256":  "8c9bd580209335fbff868b35aac5a428b974be7d41c834a59dec8587e4bb8259",
+        "bytes":  4149
+    },
+    {
+        "path":  "01-product/scope.md",
+        "sha256":  "8d223b045bbcb5935bb9513e9a52ed58b28aa7f5409841e30ec74fb53f74d32f",
+        "bytes":  3758
+    },
+    {
+        "path":  "01-product/stakeholders.md",
+        "sha256":  "20b9a17f659131c81a6e75c08aa740c188b46a0c1260e41734d30acd9a5082d1",
+        "bytes":  2331
+    },
+    {
+        "path":  "01-product/vision.md",
+        "sha256":  "f0ccaac6d9a41a9d8a2a30c2531d04fe883d684e3b5586f9f035b3dbbf18096a",
+        "bytes":  3726
+    },
+    {
+        "path":  "02-planning/backlog.md",
+        "sha256":  "7386da1d4686e5b99a2f574d1fa3bb207093ec53d21747f936a1f28084c8608b",
+        "bytes":  3906
+    },
+    {
+        "path":  "02-planning/dependencies.md",
+        "sha256":  "9d8ef17346304c975697df2fbb75a4b4378d69b32cca640c8bc16b72ca15b784",
+        "bytes":  2254
+    },
+    {
+        "path":  "02-planning/metrics.md",
+        "sha256":  "0eba271f5b010156d104d4d1a3b086c8fb151d684df1accb80ca6f0f75efa0ad",
+        "bytes":  2851
+    },
+    {
+        "path":  "02-planning/release-plan.md",
+        "sha256":  "cb11e0e624e1f0463a232592718705b820677ff06c9725880eb40eca4cb1eeb7",
+        "bytes":  4048
+    },
+    {
+        "path":  "02-planning/risks.md",
+        "sha256":  "fa6cf39414a65bb3d16e57ee0a7c57bed1a1942d54d0d0a2c63c126c9145c071",
+        "bytes":  2532
+    },
+    {
+        "path":  "02-planning/roadmap.md",
+        "sha256":  "fc3dc67677018542e91eef1c0b0007b17b4a1f02da3fde999682487699541640",
+        "bytes":  4193
+    },
+    {
+        "path":  "02-planning/sprint-plan.md",
+        "sha256":  "8360318011d5eb3c17814f2cfba46d2303b91b4fd70fe457793fa146e93cfb87",
+        "bytes":  6575
+    },
+    {
+        "path":  "02-planning/user-stories.md",
+        "sha256":  "b62ca29d8c8f88638e0df832bee3aaad69cb6503e3db49f6d99c25f60fd7a9f2",
+        "bytes":  7666
+    },
+    {
+        "path":  "03-architecture/application-architecture.md",
+        "sha256":  "c75a5b3e07afad3368fabff3d1758f5248e6f09657611e6a9d960b6755e24852",
+        "bytes":  4576
+    },
+    {
+        "path":  "03-architecture/data-architecture.md",
+        "sha256":  "ea22afcb83f86b0957438c0e5f31e1c861e53bcc222988924a6af5be2c1d7538",
+        "bytes":  8392
+    },
+    {
+        "path":  "03-architecture/diagrams.md",
+        "sha256":  "8f0195163c9684059355ecd9a6a77296cf8fb874cf0c90cbab0a9bb4ecf5d989",
+        "bytes":  6301
+    },
+    {
+        "path":  "03-architecture/integration-architecture.md",
+        "sha256":  "931c254fa4dd63f7aac45b49c7a2d0b67f62faeab68a36666f345540b209f5d9",
+        "bytes":  2285
+    },
+    {
+        "path":  "03-architecture/overview.md",
+        "sha256":  "aa13fd56fd6257ea8acc32d296938c4720416023dd0a229df91a27afde67880a",
+        "bytes":  4318
+    },
+    {
+        "path":  "03-architecture/security-architecture.md",
+        "sha256":  "bad618535a22605ffe5e111e5f510c7f960ead24af531ea261113c2eec5ffc70",
+        "bytes":  3430
+    },
+    {
+        "path":  "03-architecture/system-context.md",
+        "sha256":  "5241b0072ee4d9f13a8ff8b0f2182ff6b1fd61563f7ae19afd74babe870f9eff",
+        "bytes":  2338
+    },
+    {
+        "path":  "03-architecture/adr/ADR-001-modular-monolith-architecture.md",
+        "sha256":  "a3b61c76c10b2748d58487ceb0b26a0d5625657f2a34369e02e348a379b4a244",
+        "bytes":  1942
+    },
+    {
+        "path":  "03-architecture/adr/ADR-002-postgresql-schema-isolation.md",
+        "sha256":  "639a3576688071e6d71ef5adad564c6aa69b6740966a6e5fcc8f887771a81a8c",
+        "bytes":  1637
+    },
+    {
+        "path":  "03-architecture/adr/ADR-003-sso-iam-jwt-rs256.md",
+        "sha256":  "e778a39046a2de7b7ee14780557fa51d5a38781177da09074099994ce6d6c54a",
+        "bytes":  1955
+    },
+    {
+        "path":  "03-architecture/adr/ADR-004-aws-ecs-fargate-platform.md",
+        "sha256":  "e7f6e45041c22fab879b90fc8d32a131d14f8c737de1f99ed044e2f1186845ba",
+        "bytes":  1805
+    },
+    {
+        "path":  "03-architecture/adr/ADR-005-monorepo-tooling.md",
+        "sha256":  "3b96e324f56d88f82174da8e41f1cffe9c18dd95a2beb039cb042c1e91485c1e",
+        "bytes":  1609
+    },
+    {
+        "path":  "04-development/api-guidelines.md",
+        "sha256":  "3de36b620c38c8a72f9e67ee6444fefe2db6dbcdbda387a851d7126419ca79fe",
+        "bytes":  2070
+    },
+    {
+        "path":  "04-development/branching-strategy.md",
+        "sha256":  "09ea1d8feb142c363062a5acfaaa892ad93da42701aa3e371b84190587ec5604",
+        "bytes":  2511
+    },
+    {
+        "path":  "04-development/coding-standards.md",
+        "sha256":  "03f0cc881e98e930a16240b7d55f1cf75418c56cff3d85459827e8554bafa68c",
+        "bytes":  2638
+    },
+    {
+        "path":  "04-development/database-guidelines.md",
+        "sha256":  "169ff3f926263d1f025f581617f39ae930bb2e09a4da11efde32424129356fbf",
+        "bytes":  2083
+    },
+    {
+        "path":  "04-development/git.md",
+        "sha256":  "a6835db6b3a544efb58612b97c2ee7cefddc23a0c8d45722d6eb65dd34a65048",
+        "bytes":  1573
+    },
+    {
+        "path":  "04-development/pull-requests.md",
+        "sha256":  "123a977f8f21737c224e21ae58bf3ed353b413a3331c73d2e5d3e4d88e2a401b",
+        "bytes":  2102
+    },
+    {
+        "path":  "04-development/repository-structure.md",
+        "sha256":  "c568707fbbfb2a8ab770ce534894e4ce45b3f095b6b24fe7e04bbe832f1e8104",
+        "bytes":  3926
+    },
+    {
+        "path":  "04-development/setup.md",
+        "sha256":  "878dbba30d2f8239dfc48859593b64b79489bc15c25204970f15d970abf916bb",
+        "bytes":  2491
+    },
+    {
+        "path":  "04-development/testing-guidelines.md",
+        "sha256":  "5fffbb6a4be12f2a695d23fa89c8ccbbc0129999c684f52f173ce180319f7eeb",
+        "bytes":  2475
+    },
+    {
+        "path":  "05-security/authentication.md",
+        "sha256":  "dabd4f30a6f39f9965f1ac4139d47504ee26c314747a302b00bf82b6386678b1",
+        "bytes":  2687
+    },
+    {
+        "path":  "05-security/authorization.md",
+        "sha256":  "a18642e2ce5e1fcae917a4ec9a14483ec68bb6b7388c5f0721b55489d1af8df6",
+        "bytes":  1781
+    },
+    {
+        "path":  "05-security/iam-rbac.md",
+        "sha256":  "17d171c76b8b2127ddb7eaad087753c69b03b10306bba5c726ea7b5a5966c5b8",
+        "bytes":  2131
+    },
+    {
+        "path":  "05-security/overview.md",
+        "sha256":  "16af76403a5e3916800874b7a4458742f6dc2f5f87c814feebe4ea0ad376d89e",
+        "bytes":  2166
+    },
+    {
+        "path":  "05-security/secrets.md",
+        "sha256":  "aabfb36038673b2776d493f9c9497f51fddb75dc7309846462d205fb980949b2",
+        "bytes":  1898
+    },
+    {
+        "path":  "05-security/security-checklist.md",
+        "sha256":  "161151604f1868ad6a4627227b51fa93722ad7189fde7998795eba8fefa7ca69",
+        "bytes":  2092
+    },
+    {
+        "path":  "05-security/sso.md",
+        "sha256":  "f755ef07489357e3cfa7a22f32143c7d5912294227e786081dd132abffffbff1",
+        "bytes":  2062
+    },
+    {
+        "path":  "05-security/threat-model.md",
+        "sha256":  "df73eba2377a2a42283cef0ae73a0513d65e5f37f383d222c88aa2e2640315a4",
+        "bytes":  2638
+    },
+    {
+        "path":  "06-infrastructure/aws.md",
+        "sha256":  "7bc0110578da084bee482a2f8f1acd8c299b2b73bdb7f6ce01b10403ff2ee700",
+        "bytes":  2729
+    },
+    {
+        "path":  "06-infrastructure/disaster-recovery.md",
+        "sha256":  "fe22d4b7ec1d2cd44217e53830e734bc6c321795044df8e7d819ffc7f295cb94",
+        "bytes":  1562
+    },
+    {
+        "path":  "06-infrastructure/docker.md",
+        "sha256":  "f190cce349b6f3d30f8880e41b9a46243b25146e34ba29b5880a5a51755bf167",
+        "bytes":  2041
+    },
+    {
+        "path":  "06-infrastructure/environments.md",
+        "sha256":  "0d39f88231fd54ba8baa24fd09c4cf4a9be4cbd6e2e8666e0ee2da6eeea4e3d1",
+        "bytes":  1400
+    },
+    {
+        "path":  "06-infrastructure/networking.md",
+        "sha256":  "4acc63ca1e10b59476093bf40a0452d12a5721ac7644f5bd454027213f02e78b",
+        "bytes":  1712
+    },
+    {
+        "path":  "06-infrastructure/overview.md",
+        "sha256":  "9018859e53d67cc370254776b80123c84f1d961d8f92e113e546b7a7bb14d088",
+        "bytes":  1554
+    },
+    {
+        "path":  "06-infrastructure/terraform.md",
+        "sha256":  "8ba3b3fecc94590c4905228124673c221b9e3f49affb206dc17274d4063c1a89",
+        "bytes":  2689
+    },
+    {
+        "path":  "07-devops/ci-cd.md",
+        "sha256":  "d89fa6b69ae2115c68b61928b4737584cf410f39bf59a8e0a0cc2749e2049b05",
+        "bytes":  2140
+    },
+    {
+        "path":  "07-devops/deployment.md",
+        "sha256":  "22085c788afaeaef60d8eae5416adf754c3d0b25139d1dcb1998206e062e32d6",
+        "bytes":  1560
+    },
+    {
+        "path":  "07-devops/finops.md",
+        "sha256":  "4ac8543a7e3724a65852d3f23b737d3ca4e93bed82d4e67c10cb6eddf5fa9e05",
+        "bytes":  2915
+    },
+    {
+        "path":  "07-devops/github-actions.md",
+        "sha256":  "17e125a1a56c9669a39f6d137bc4745e2b35f8d01583612676a6adaba8c05edf",
+        "bytes":  2598
+    },
+    {
+        "path":  "07-devops/observability.md",
+        "sha256":  "f884a1a301566a904d46b302adb78d7735bfdbcf46e38e41e328fe23dd1694ac",
+        "bytes":  3098
+    },
+    {
+        "path":  "07-devops/rollback.md",
+        "sha256":  "d208d7a1ae51eaa173a74634936d48b6eee5c81c752b338fbe69f5094a1d20d9",
+        "bytes":  2142
+    },
+    {
+        "path":  "08-quality/contract-tests.md",
+        "sha256":  "a131ebf2e57cb7af38017b878caa413514ecc8712294a9fc903a8bc10c5c3bfa",
+        "bytes":  1284
+    },
+    {
+        "path":  "08-quality/e2e.md",
+        "sha256":  "91a2278b4090e9e2cff6d9fb5a81ecbe7a977c912cb948105d3a3eb062932973",
+        "bytes":  1486
+    },
+    {
+        "path":  "08-quality/integration-tests.md",
+        "sha256":  "b3260473463e96485e95bf3d4d561129b9ed55b3188bbb0711f4fe0d68b7196b",
+        "bytes":  1674
+    },
+    {
+        "path":  "08-quality/performance.md",
+        "sha256":  "620efbd76ae2bc4d16d54d7045ae4b753681ac9285f12c0957c4b432697f72c5",
+        "bytes":  1191
+    },
+    {
+        "path":  "08-quality/security-testing.md",
+        "sha256":  "161f993adc90f055edf6f64f44f588c6d7e104044b5826d44c9c1f424e260b5f",
+        "bytes":  1274
+    },
+    {
+        "path":  "08-quality/strategy.md",
+        "sha256":  "6d3ca8e6601a4dd3714c922764e3fa5a6a5cf3c4ab70fc86ef7335f78fbaa0e2",
+        "bytes":  2525
+    },
+    {
+        "path":  "08-quality/unit-tests.md",
+        "sha256":  "f0ce3a9869498442e6f665575b527ca4ae243d16b7df32f9ba1845f2940dc599",
+        "bytes":  1392
+    },
+    {
+        "path":  "09-governance/ceremonies.md",
+        "sha256":  "7a1c76345c34a60208f823be0bdc36da813088806cd86d7f4e734e1c21128fa1",
+        "bytes":  2611
+    },
+    {
+        "path":  "09-governance/definition-of-done.md",
+        "sha256":  "7c96b8960b68db3b6c1e386281666ecb7f85ce0454fc84f445eb92e1c9e9f577",
+        "bytes":  1893
+    },
+    {
+        "path":  "09-governance/definition-of-ready.md",
+        "sha256":  "5571f69c60938635d73b991b7361bb5e755494f482e29b5f3f6e4e0b665418c4",
+        "bytes":  1550
+    },
+    {
+        "path":  "09-governance/raci.md",
+        "sha256":  "e1e96c4690ee5a233fdd9ed0d80ca160769ab3f2ff2e2bf1ece66092625f2ed3",
+        "bytes":  1976
+    },
+    {
+        "path":  "09-governance/responsibilities.md",
+        "sha256":  "3fb80a4839214c21a78ae63fb9cde489566126f59e6a85da5bccd1f59ffb15b6",
+        "bytes":  3865
+    },
+    {
+        "path":  "09-governance/scrum.md",
+        "sha256":  "bb1c3d1d3ff426b9561b34073cdf5a1d39fb8d6db13e9334f993668b06988725",
+        "bytes":  1428
+    },
+    {
+        "path":  "09-governance/team-structure.md",
+        "sha256":  "28831eee3f99ec114b0cb7eae3b65ca0aaa3c6bc332ad5e718f6343d8187690b",
+        "bytes":  5323
+    },
+    {
+        "path":  "10-runbooks/deployment.md",
+        "sha256":  "90328a124d60da07e9ea15dde190769e033b76909afc53a00d3ca8d1a5739fec",
+        "bytes":  2032
+    },
+    {
+        "path":  "10-runbooks/incident-response.md",
+        "sha256":  "c5e74f6b48fc12c81ef395f2840c74af1a038ed962205e7c114865ae48f7912f",
+        "bytes":  2308
+    },
+    {
+        "path":  "10-runbooks/local-development.md",
+        "sha256":  "49ec9e3a4e879a81eac0692f6c4ff2cc6e9af5670fdb559333d38092b410aa2c",
+        "bytes":  1482
+    },
+    {
+        "path":  "10-runbooks/rollback.md",
+        "sha256":  "b1d02423bc82176de64a3ef95bd4e4b9580030fb0e9e57ee09244e8edc502d3a",
+        "bytes":  1755
+    },
+    {
+        "path":  "10-runbooks/troubleshooting.md",
+        "sha256":  "3e5ed73eafab54cf85a6ce2578c03d490ae4a2bbbf0f7b3fbf9311553a0508df",
+        "bytes":  1974
+    }
+]

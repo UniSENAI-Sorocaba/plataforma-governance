@@ -1,0 +1,46 @@
+{
+  "organization": "unisenaisorocaba",
+  "project": {"title": "Plataforma Digital — 2026.2", "create": true},
+  "repositories": [
+    {"name": "plataforma-governance", "description": "Governança, requisitos, SPECs, ADRs e contratos", "private": true, "team": "product-governance"},
+    {"name": "plataforma-backend", "description": "API Java 21 / Spring Boot 3", "private": true, "team": "backend"},
+    {"name": "plataforma-frontend", "description": "Aplicações Next.js / TypeScript com SSR", "private": true, "team": "frontend"},
+    {"name": "plataforma-database", "description": "Migrations, schemas, seeds e validações PostgreSQL", "private": true, "team": "database"},
+    {"name": "plataforma-infrastructure", "description": "Terraform, AWS, CI/CD e observabilidade", "private": true, "team": "cloud-devops"},
+    {"name": "plataforma-quality", "description": "E2E, performance, segurança e evidências", "private": true, "team": "quality-security"}
+  ],
+  "teams": [
+    {"name": "product-governance", "privacy": "closed", "members": ["lucianomenezesjr"]},
+    {"name": "product-owners", "privacy": "closed", "members": ["lucianomenezesjr"]},
+    {"name": "technical-leads", "privacy": "closed", "members": ["victorgeroto", "Isabelly-Caroline"]},
+    {"name": "backend", "privacy": "closed", "members": ["victorgeroto", "PedroDias010", "AnaPaulaMaximo"]},
+    {"name": "frontend", "privacy": "closed", "members": ["Nicolas1xx", "matheusboffz"]},
+    {"name": "database", "privacy": "closed", "members": ["Isabelly-Caroline"]},
+    {"name": "cloud-devops", "privacy": "closed", "members": ["FelipeNRamalho", "Ry4nBR", "guibuenoc"]},
+    {"name": "quality-security", "privacy": "closed", "members": ["GustavooGomess", "ahslammendes", "biancaciriloads", "GuilhermeAparecidoArruda"]}
+  ],
+  "labels": [
+    {"name": "priority:P0", "color": "b60205", "description": "Bloqueia o MVP"},
+    {"name": "priority:P1", "color": "d93f0b", "description": "Importante no MVP"},
+    {"name": "priority:P2", "color": "fbca04", "description": "Melhoria ou futuro"},
+    {"name": "priority:P3", "color": "0e8a16", "description": "Backlog futuro"},
+    {"name": "blocked", "color": "000000", "description": "Dependência bloqueante"},
+    {"name": "needs-po", "color": "5319e7", "description": "Requer decisão ou aceite do PO"}
+  ],
+  "ruleset": {
+    "name": "protect-main",
+    "target": "branch",
+    "enforcement": "active",
+    "required_approvals": 1,
+    "required_checks": ["lint", "build", "unit-tests", "spec-compliance"]
+  },
+  "environments": ["development", "staging", "production"],
+  "backlogs": {
+    "product-governance.md": "plataforma-governance",
+    "backend.md": "plataforma-backend",
+    "frontend.md": "plataforma-frontend",
+    "database.md": "plataforma-database",
+    "cloud-devops.md": "plataforma-infrastructure",
+    "quality-security.md": "plataforma-quality"
+  }
+}

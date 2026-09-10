@@ -1,0 +1,12 @@
+{
+  "notice": "GENERATED FILE — DO NOT EDIT",
+  "generated_at": "2026-09-10",
+  "repositories": {
+    "governance": "plataforma-governance",
+    "backend": "plataforma-backend",
+    "frontend": "plataforma-frontend",
+    "database": "plataforma-database",
+    "infrastructure": "plataforma-infrastructure",
+    "quality": "plataforma-quality"
+  }
+}
