@@ -8,5 +8,10 @@ dist/
 *.egg-info/
 audit-report.json
 plan.json
+audit-report.md
+plan.md
+project-inventory.json
+project-sync-report.json
+project-inventory.json
 .env
 *.token

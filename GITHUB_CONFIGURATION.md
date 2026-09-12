@@ -11,7 +11,7 @@ Este documento define a configuração necessária da organização GitHub `UniS
 Decisões:
 
 - Luciano Menezes Júnior (`@lucianomenezesjr`) é **Lead Product Owner (LPO) / PO Coach**.
-- Fellipe Raszejas (`oliveiraraszejasfellipe@gmail.com`) é **Product Owner (PO)**; seu username GitHub ainda precisa ser confirmado.
+- Fellipe Raszejas (`@FellipeRaszejas`) é **Product Owner (PO)**.
 - `new_teams.md` é a fonte de verdade da composição das equipes.
 - O trabalho é controlado por Issues e por um único GitHub Project organizacional.
 - O desenvolvimento usa GitHub Flow, com `main` protegida e releases por tag.
@@ -74,7 +74,7 @@ Princípios:
 - habilitar 2FA obrigatória na organização;
 - usar contas pessoais nominativas; não compartilhar credenciais;
 - revisar membros, outside collaborators e chaves trimestralmente;
-- convidar Fellipe por e-mail e, após aceite, substituir a pendência pelo username em Teams e CODEOWNERS.
+- incluir Fellipe (`@FellipeRaszejas`) nos Teams e CODEOWNERS aplicáveis.
 
 ## 4. Rulesets de branches e tags
 
@@ -232,7 +232,7 @@ O workflow deve verificar que a tag resolve para o SHA declarado antes de execut
 
 ## 11. Ordem de implantação
 
-1. Confirmar o username GitHub de Fellipe e os usernames ainda ausentes em `new_teams.md`.
+1. Confirmar os usernames ainda ausentes em `new_teams.md`.
 2. Criar Teams e incluir membros conforme a fonte definitiva.
 3. Criar/renomear repositórios e atribuir permissões por Team.
 4. Criar Project, campos, views, milestones e labels.
@@ -257,7 +257,6 @@ O workflow deve verificar que a tag resolve para o SHA declarado antes de execut
 
 ## 13. Pendências que não bloqueiam a documentação
 
-- username GitHub de Fellipe Raszejas;
 - usernames dos integrantes marcados como “não identificado com segurança”;
 - confirmar GitHub Team ou decidir conscientemente operar com as limitações do GitHub Free em repositórios privados;
 - definição nominal dos administradores da organização e release managers;

@@ -66,6 +66,9 @@ class GitHubClient:
     def patch(self, path: str, payload: dict[str, Any], expected: tuple[int, ...] = (200,)) -> Any:
         return self.request("PATCH", path, payload, expected=expected)
 
+    def delete(self, path: str, expected: tuple[int, ...] = (204,)) -> Any:
+        return self.request("DELETE", path, expected=expected)
+
     def paginate(self, path: str, per_page: int = 100) -> list[Any]:
         separator = "&" if "?" in path else "?"
         page = 1

@@ -15,7 +15,7 @@ Esta composição substitui toda estrutura anterior. As equipes são squads func
 | Pessoa | Papel |
 | --- | --- |
 | Luciano Menezes Júnior (`@lucianomenezesjr`) | Lead Product Owner / PO Coach |
-| Fellipe Raszejas (GitHub pendente) | Product Owner |
+| Fellipe Raszejas (`@FellipeRaszejas`) | Product Owner |
 
 ## Backend (9)
 

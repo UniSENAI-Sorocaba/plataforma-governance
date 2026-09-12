@@ -75,6 +75,23 @@ def validate_config(data: Any) -> list[str]:
         if name in team_names:
             errors.append(f"team duplicado: {name}")
         team_names.add(name)
+    valid_permissions = {"pull", "triage", "push", "maintain", "admin"}
+    for repo_index, repo in enumerate(repos):
+        if not isinstance(repo, dict):
+            continue
+        access = repo.get("access")
+        if access is None:
+            if repo.get("team") not in team_names:
+                errors.append(f"repositories[{repo_index}].team referencia team ausente")
+            continue
+        if not isinstance(access, list) or not access:
+            errors.append(f"repositories[{repo_index}].access deve ser uma lista não vazia")
+            continue
+        for access_index, grant in enumerate(access):
+            if not isinstance(grant, dict) or grant.get("team") not in team_names:
+                errors.append(f"repositories[{repo_index}].access[{access_index}].team referencia team ausente")
+            if not isinstance(grant, dict) or grant.get("permission") not in valid_permissions:
+                errors.append(f"repositories[{repo_index}].access[{access_index}].permission é inválida")
     mapping = data.get("backlogs", {})
     if not isinstance(mapping, dict):
         errors.append("backlogs deve ser um objeto")

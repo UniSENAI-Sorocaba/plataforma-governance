@@ -25,9 +25,22 @@ class GitHubManager:
         org = self.client.get(f"/orgs/{self.client.quote(self.org)}")
         repos = self.client.paginate(f"/orgs/{self.client.quote(self.org)}/repos?type=all")
         teams = self.client.paginate(f"/orgs/{self.client.quote(self.org)}/teams")
-        details: dict[str, Any] = {}
+        team_members: dict[str, list[str]] = {}
+        for team in self.config.teams:
+            slug = self._slug(team["name"])
+            if any(item["slug"].lower() == slug.lower() for item in teams):
+                team_members[slug] = sorted(item["login"] for item in self.client.paginate(f"/orgs/{self.org}/teams/{slug}/members"))
+        team_permissions: dict[str, bool] = {}
         for wanted in self.config.repositories:
             name = wanted["name"]
+            for grant in wanted.get("access", []):
+                key = f"{grant['team']}/{name}"
+                assigned = self._safe_get(f"/orgs/{self.org}/teams/{grant['team']}/repos/{self.org}/{name}")
+                team_permissions[key] = bool(assigned.get("permissions", {}).get(grant["permission"], False))
+        details: dict[str, Any] = {}
+        wanted_names = [item["name"] for item in self.config.repositories]
+        wanted_names.extend(self.config.data.get("migration", {}).get("legacy_repositories", []))
+        for name in dict.fromkeys(wanted_names):
             repo = next((item for item in repos if item["name"].lower() == name.lower()), None)
             if not repo:
                 continue
@@ -35,6 +48,9 @@ class GitHubManager:
             details[name] = {
                 "visibility": repo.get("visibility"),
                 "default_branch": repo.get("default_branch"),
+                "size_kb": repo.get("size"),
+                "archived": repo.get("archived", False),
+                "open_issues": repo.get("open_issues_count", 0),
                 "rulesets": [item.get("name") for item in self._safe_list(f"/repos/{self.org}/{name}/rulesets")],
                 "environments": [item.get("name") for item in envs.get("environments", [])],
                 "labels": [item.get("name") for item in self.client.paginate(f"/repos/{self.org}/{name}/labels")],
@@ -43,26 +59,63 @@ class GitHubManager:
             "organization": {"login": org.get("login"), "plan": (org.get("plan") or {}).get("name", "not_exposed"), "two_factor_requirement_enabled": org.get("two_factor_requirement_enabled")},
             "repositories": sorted(item["name"] for item in repos),
             "teams": sorted(item["slug"] for item in teams),
+            "team_members": team_members,
+            "team_permissions": team_permissions,
             "projects": self._list_projects(),
             "details": details,
         }
+
+    def member_changes(self, teams: set[str] | None = None) -> list[Change]:
+        selected = {team.lower() for team in teams or set()}
+        return [
+            Change("members", "ensure", f"{self._slug(team['name'])}/{username}", {"team": self._slug(team["name"]), "username": username})
+            for team in self.config.teams
+            if not selected or self._slug(team["name"]).lower() in selected
+            for username in team.get("members", [])
+        ]
+
+    def project_inventory(self) -> list[dict[str, Any]]:
+        query = """
+        query($login:String!){
+          organization(login:$login){
+            projectsV2(first:100){nodes{
+              id number title closed shortDescription
+              items{totalCount}
+              views(first:50){nodes{id number name layout filter}}
+              fields(first:50){nodes{
+                ... on ProjectV2Field{id name dataType}
+                ... on ProjectV2SingleSelectField{id name dataType options{id name}}
+                ... on ProjectV2IterationField{id name dataType configuration{iterations{id title startDate duration}}}
+              }}
+            }}
+          }
+        }
+        """
+        data = self.client.graphql(query, {"login": self.org})
+        return list(data["organization"]["projectsV2"]["nodes"])
 
     def plan(self, state: dict[str, Any] | None = None) -> list[Change]:
         state = state or self.audit()
         changes: list[Change] = []
         repos = {name.lower() for name in state["repositories"]}
         teams = {name.lower() for name in state["teams"]}
+        current_members = {slug: {username.lower() for username in members} for slug, members in state.get("team_members", {}).items()}
         for team in self.config.teams:
             slug = self._slug(team["name"])
             if slug not in teams:
                 changes.append(Change("teams", "create", team["name"], team))
             for username in team.get("members", []):
-                changes.append(Change("members", "ensure", f"{slug}/{username}", {"team": slug, "username": username}))
+                if username.lower() not in current_members.get(slug, set()):
+                    changes.append(Change("members", "ensure", f"{slug}/{username}", {"team": slug, "username": username}))
         for repo in self.config.repositories:
             name = repo["name"]
             if name.lower() not in repos:
                 changes.append(Change("repositories", "create", name, repo))
-            changes.append(Change("permissions", "ensure", f"{repo['team']}/{name}", {"team": repo["team"], "repository": name, "permission": "push"}))
+            access = repo.get("access") or [{"team": repo["team"], "permission": "push"}]
+            for grant in access:
+                target = f"{grant['team']}/{name}"
+                if not state.get("team_permissions", {}).get(target, False):
+                    changes.append(Change("permissions", "ensure", target, {"team": grant["team"], "repository": name, "permission": grant["permission"]}))
             detail = state.get("details", {}).get(name, {})
             for label in self.config.data.get("labels", []):
                 if label["name"] not in detail.get("labels", []):
@@ -104,6 +157,24 @@ class GitHubManager:
                 priority = item.priority_sprint.split("/", 1)[0]
                 self.client.post(f"/repos/{self.org}/{repository}/issues", {"title": item.issue_title, "body": item.body, "labels": [f"priority:{priority}", "type:task"]})
                 results.append({"target": item.work_id, "result": "created"})
+        return results
+
+    def delete_legacy_repositories(self) -> list[dict[str, str]]:
+        legacy = self.config.data.get("migration", {}).get("legacy_repositories", [])
+        desired = {item["name"].lower() for item in self.config.repositories}
+        results: list[dict[str, str]] = []
+        for name in legacy:
+            if name.lower() in desired:
+                raise GitHubError(f"Recusa de segurança: {name} também é um repositório desejado")
+            try:
+                self.client.delete(f"/repos/{self.org}/{name}")
+                results.append({"target": name, "result": "deleted"})
+            except GitHubError as exc:
+                if "HTTP 404" in str(exc):
+                    results.append({"target": name, "result": "not_found"})
+                    continue
+                results.append({"target": name, "result": "error", "message": str(exc)})
+                break
         return results
 
     def _apply_one(self, change: Change) -> None:

@@ -56,7 +56,7 @@ Foram materializados:
 
 Estas ações não podem ser concluídas somente no filesystem:
 
-1. confirmar username GitHub de Fellipe Raszejas e dos integrantes ainda não identificados;
+1. confirmar usernames dos integrantes ainda não identificados;
 2. criar GitHub Teams, repositórios, Project, rulesets e environments;
 3. ajustar os slugs de CODEOWNERS caso a organização use nomes diferentes;
 4. abrir o PR de governança, coletar as aprovações requeridas e publicar `governance-v0.1.0`;

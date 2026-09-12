@@ -1,3 +1,5 @@
+from types import SimpleNamespace
+
 from github_admin.manager import GitHubManager
 
 
@@ -10,3 +12,23 @@ def test_ruleset_payload_protects_main():
 
 def test_slug_is_stable():
     assert GitHubManager._slug("Cloud DevOps") == "cloud-devops"
+
+
+def test_delete_legacy_is_limited_to_configured_repositories():
+    class Client:
+        def __init__(self):
+            self.deleted = []
+
+        def delete(self, path):
+            self.deleted.append(path)
+
+    client = Client()
+    config = SimpleNamespace(
+        organization="org",
+        repositories=[{"name": "new-repo"}],
+        data={"migration": {"legacy_repositories": ["old-repo"]}},
+    )
+    manager = GitHubManager(client, config)
+
+    assert manager.delete_legacy_repositories() == [{"target": "old-repo", "result": "deleted"}]
+    assert client.deleted == ["/repos/org/old-repo"]
