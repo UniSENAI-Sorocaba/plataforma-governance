@@ -197,12 +197,19 @@ O GitHub não representa bem regras condicionais complexas apenas com branch pro
 
 ## 9. Actions, ambientes, secrets e segurança
 
-Criar ambientes `development`, `staging` e `production`:
+Apenas `production` existe na AWS (ADR-012). Development executa localmente e a validação ocorre em ambiente efêmero no CI, sem environment no GitHub.
+
+Criar o environment `production` quando o plano permitir (environments e required reviewers não estão disponíveis em repositórios privados no plano Free):
 
 - `production` isolado, com aprovação manual de Cloud & DevOps e PO quando houver aceite de release;
 - proteção por branch/tag; sem deploy de branches arbitrárias;
 - secrets por environment e OIDC para AWS, evitando access keys permanentes;
-- AWS roles separadas por repositório e ambiente, com privilégio mínimo;
+- AWS roles separadas por repositório e função, com privilégio mínimo;
+
+Enquanto environments não estiverem disponíveis, o deploy de produção é disparado a partir de um repositório de release com escrita restrita, e as trust policies da AWS aceitam apenas a branch `main` do repositório correspondente. O desenho está em `_KB/operations/guides/cloud-devops/08-cicd-no-plano-free-do-github.md`.
+
+Regras gerais:
+
 - concurrency para impedir dois deploys simultâneos no mesmo ambiente;
 - artefatos e evidências com retenção conforme política de governança.
 
