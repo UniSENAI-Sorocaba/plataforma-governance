@@ -29,5 +29,6 @@ As decisões completas estão nos ADRs da [`_KB`](_KB/README.md).
 - Relatório de migração: [`_KB_MIGRATION_REPORT.md`](_KB_MIGRATION_REPORT.md)
 - Baseline histórica: [`_KB/archive/legacy-2026-09-09/`](_KB/archive/legacy-2026-09-09/)
 - Automação administrativa do GitHub: [`github_admin/README.md`](github_admin/README.md)
+- Material de apoio de Cloud & DevOps (não normativo): [`_KB/operations/guides/cloud-devops/README.md`](_KB/operations/guides/cloud-devops/README.md)
 
 Depois da importação, Issues representam unidades de trabalho e o GitHub Project representa prioridade e estado. Markdown não duplica o estado operacional.

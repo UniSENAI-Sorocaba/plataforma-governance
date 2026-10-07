@@ -1,0 +1,43 @@
+# Emulador da AWS executado localmente. Todos os recursos criados pelo Terraform existem apenas neste container.
+services:
+  ministack:
+    # Versão fixada (sem :latest), pelo mesmo motivo que providers e imagens da plataforma são fixados: reprodutibilidade.
+    image: ministackorg/ministack:1.5.20
+    container_name: ministack
+    ports:
+      - "127.0.0.1:4566:4566"   # somente nesta máquina; não expõe o emulador na rede local
+    # environment:
+    #   AUTH: "true"           # liga a avaliação de políticas IAM (AccessDenied de verdade)
+    #   PERSIST_STATE: "1"     # guarda os recursos ao reiniciar (use junto com os volumes abaixo)
+    #   S3_PERSIST: "1"        # guarda o CONTEÚDO dos objetos S3 (ex.: o terraform.tfstate)
+    volumes:
+      # Necessário para RDS/ECS: o MiniStack sobe containers reais (ex.: Postgres 16)
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Para persistir mesmo após "docker compose down", descomente (e o bloco volumes: no fim):
+      # - ministack-state:/tmp/ministack-state
+      # - ministack-data:/tmp/ministack-data
+
+  # Terraform em container, usado quando o CLI não está instalado. Compartilha a rede do
+  # MiniStack, de modo que "localhost:4566" funciona como na execução direta na máquina.
+  terraform:
+    image: hashicorp/terraform:1.13
+    profiles: ["tools"]
+    network_mode: "service:ministack"
+    working_dir: /work
+    volumes:
+      - .:/work
+
+  # AWS CLI já configurada para o MiniStack:  docker compose run --rm aws s3 ls
+  aws:
+    image: amazon/aws-cli:latest
+    profiles: ["tools"]
+    network_mode: "service:ministack"
+    environment:
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ENDPOINT_URL: http://localhost:4566
+
+# volumes:
+#   ministack-state:
+#   ministack-data:
