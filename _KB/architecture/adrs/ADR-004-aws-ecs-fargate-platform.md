@@ -26,7 +26,7 @@ Adotar o **AWS ECS Fargate** como serviço de computação para o backend da API
   * Zero gerenciamento de servidores físicos ou virtuais.
   * Execução segura em subnets privadas sem IP público.
   * Facilidade de execução de tasks pontuais para migrations do banco.
-  * Baixo custo operacional (~$32/mês para Staging + Produção).
+  * Baixo custo operacional (~$32/mês para Staging + Produção). Nota (2026-10-07): com o ADR-012, apenas Produção existe na AWS; a estimativa vigente está no material de apoio de custos.
 * **Negativas:**
   * Tempo de inicialização (*cold start*) de novas tasks é ligeiramente superior ao de instâncias EC2 pré-aquecidas (~30 a 45 segundos).
 
