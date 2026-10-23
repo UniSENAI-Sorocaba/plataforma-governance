@@ -23,12 +23,13 @@ Cada evento registrado inclui ator (ou indicação de ator não autenticado), a�
 - **AC-AUTH-004-04 — Correlação:** Dado um identificador de correlação da requisição, quando uma ação gerar auditoria, então o evento preserva esse identificador para relacionar a ação aos logs técnicos sem copiar credenciais ou tokens.
 - **AC-AUTH-004-05 — Acesso aos registros:** Quando os eventos forem consultados, então o acesso segue menor privilégio e as consultas são rastreáveis, conforme política a aprovar.
 
-## Decisões pendentes para aprovação
-1. Catálogo exato de eventos auditáveis, incluindo tentativas inválidas e falhas de autorização.
-2. Esquema/tipos dos campos, origem do instante, sincronização de relógio e tratamento de identificadores externos.
-3. Retenção, descarte, exportação e acesso aos registros; papéis autorizados a consultá-los.
-4. Comportamento quando o armazenamento de auditoria estiver indisponível (bloquear ação, fila durável ou outro modo).
-5. Separação operacional entre trilha de auditoria e logs técnicos, e evidência de integridade dos eventos.
+## Alinhamento pendente (propostas do caderno não aprovadas)
+- O caderno propõe não registrar auditoria, em conflito com Must Haves atuais de trilha para ações sensíveis. Não remover o requisito antes da decisão formal.
+- PO e Segurança devem aprovar catálogo de eventos, campos mínimos, minimização de dados pessoais, papéis com acesso, retenção/descarte/exportação e comportamento quando o armazenamento falha.
+- Definir integridade da trilha e separação entre auditoria e logs técnicos, incluindo tentativas inválidas e falhas de autorização.
+
+## Trabalho dependente da decisão
+Backend registra os eventos aprovados; DB fornece persistência protegida; Cloud define retenção/backup aplicável; QA comprova cobertura, minimização, controle de acesso e comportamento de falha.
 
 ## Dependências e rastreabilidade
 REQ-AUTH-004; MH-SEC-004; POL-SEC-001; SPEC-AUTH-001–003; PG-006. Retenção, acesso e comportamento em falha são decisões de produto/segurança e permanecem em aberto até revisão formal.
