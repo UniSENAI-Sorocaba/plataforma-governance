@@ -1,87 +1,85 @@
-Caderno de perguntas e respostas (recebido em 22/10/2026) foi incorporado como fonte de refinamento funcional. Seu conteúdo é uma proposta de regras, ainda não aprovada como baseline; as SPECs AUTH/PI/EXT/PORTAL permanecem Draft. Não substituir ADRs, Must Haves ou critérios aprovados sem decisão registrada pelo Product Owner e revisores definidos.
+# Regras por issue e lacunas de refinamento
 
-# Regras funcionais candidatas e lacunas de decisão
+Fonte adicional: caderno de perguntas e respostas recebido em 22/10/2026. Suas respostas são **regras candidatas**, não baseline aprovada. As SPECs AUTH, PI, EXT e Portal permanecem Draft. Cada regra abaixo está colocada junto ao card que precisa dela, para que a equipe encontre contexto, decisão pendente e impacto sem sair da issue.
 
-## Como interpretar
+## PG-005 — Épico e requisitos de AUTH
 
-- **Candidato do caderno:** resposta que ajuda a especificar comportamento e orientar refinamento.
-- **Conflito:** diverge de uma decisão, SPEC ou Must Have já vigente; requer decisão explícita, versionada e revisão dos responsáveis.
-- **Pendente:** falta dado verificável para implementar ou testar; não inferir valor, papel ou fluxo.
-- **Implementação:** só deve tratar uma regra como contrato depois de aprovada na SPEC correspondente.
+**Regra candidata:** login local por CPF; conta criada via importação de CSV pela coordenação; estudante define senha no primeiro acesso; não há cadastro espontâneo.
 
-## Regras candidatas consolidadas
+**Alinhamento necessário nesta issue:** a base vigente prevê OIDC/OAuth2 e recuperação por token. Decidir qual identidade vale, origem oficial do usuário, conteúdo e reimportação do CSV, normalização/uniquidade de CPF, primeiro acesso e redefinição. Se houver reset manual, definir verificação de identidade, autorização e revogação de sessões. Essas decisões são de Produto/Segurança, não devem ser decididas pela implementação.
 
-### Identidade, matrícula e acesso
+## PG-006 — SPEC-AUTH-001..004
 
-- Login local por CPF e senha; não haveria provedor de identidade externo. O primeiro acesso cria a senha e a pessoa pode alterá-la depois.
-- Coordenação com permissão importa alunos por CSV com nome, CPF, curso/turma e campos acordados. Não há cadastro público espontâneo.
-- Um CPF identifica uma conta. A conta pode estar ativa ou inativa; múltiplos papéis acumulam permissões.
-- Coordenação pode desativar aluno ou turma. Se a pessoa ainda pertencer a outra turma ativa, sua conta permanece ativa; histórico de curso concluído pode continuar visível.
-- Coordenação administra matrículas e permissões. Docente cria projetos, aprova/remove participantes e valida horas de participantes dos projetos sob sua responsabilidade. Estudante registra/edita atividades até avaliação/validação. Docentes co-responsáveis têm permissões iguais no projeto.
-- Uma experiência de login; após autenticação, a interface apresenta recursos da etapa/semestre vigente.
-- Redefinição manual por docente ou coordenação; no próximo acesso, a pessoa precisa definir nova senha.
+- **Login e conta:** definir identidade, estados ativa/inativa, unicidade, cadastro e comportamento de conta vinculada a mais de uma turma.
+- **Importação:** fechar campos CSV, formato, duplicatas, erros parciais, atualização e desativação de turma/aluno.
+- **Senha/sessão:** resolver OIDC versus senha local e token de recuperação versus reset manual; documentar bootstrap, mudança obrigatória no acesso seguinte (se aprovada), prova de identidade, expiração, logout e revogação.
+- **RBAC:** decidir matriz de coordenação acadêmica, administrador técnico, docente e estudante. O caderno sugere união de permissões quando há múltiplos papéis; definir também escopo por turma/projeto.
+- **Auditoria:** o caderno propõe não registrar auditoria; Must Haves/arquitetura atuais exigem trilha em ações sensíveis. Decidir eventos, dados mínimos, retenção, acesso e política de falha antes de remover controles.
+- **Critério:** manter Draft até cada conflito ter decisão versionada, critério numerado e revisão de PO, Segurança e responsáveis técnicos.
 
-### Projetos integradores e equipes
+## PG-007 — Épico e requisitos de PI
 
-- Docente propõe projeto e pode consultar propostas equivalentes; duplicatas não são bloqueadas automaticamente.
-- Projeto pode ser contínuo ou ter data final; participantes podem mudar por semestre.
-- Projeto tem rascunho/publicado. Rascunho é visível a estudantes autenticados; publicado pode aparecer no site público.
-- Todo projeto tem ao menos um docente responsável. Estudante solicita participação dentro de janela definida; docente aprova ou nega. Não há convite individual.
-- Docente pode remover participante, registrando justificativa. Após aprovação do aluno, só docente altera sua participação.
-- Cada pessoa participa de no máximo um PI e uma Extensão ao mesmo tempo. Uma extensão classificada como PI conta nos dois limites enquanto a pessoa estiver nela.
-- Só docente pode reabrir/arquivar projeto. Horas e notas individuais não são públicas; nota geral do projeto pode ser pública.
+**Regra candidata:** projetos podem ser contínuos ou ter data final; participantes podem mudar por semestre; todo projeto exige docente responsável; duplicidade equivalente não é bloqueada automaticamente.
 
-### Avisos, publicação e extensão
+**Alinhamento necessário nesta issue:** definir campos mínimos, ciclo de vida, semestre, continuidade, audiência de rascunho, publicação e como docente identifica propostas equivalentes. Decidir se a união PI/Extensão é um atributo de domínio ou apenas uma consequência de participação. A regra de contagem dupla não aprova automaticamente o literal `HYBRID` no enum `project_type`.
 
-- Avisos podem ser gerais ou específicos de projeto; docentes e coordenação podem publicar.
-- Coordenação define janelas de inscrição e pode alterar datas; fuso indicado: UTC-3 (Brasília).
-- O docente escolhe se o projeto será público. O caderno pede cuidado/consentimento para imagens, especialmente quando aparecem menores ou terceiros.
+## PG-008 — SPEC-PI-001..004
 
-### Avaliações e notas
+- **Participação/equipe:** o caderno propõe pedido do aluno em janela e aprovação/negação do docente, sem convite individual; remoção pelo docente exige justificativa. O card técnico atual cita convites. Escolher uma jornada, estados, desistência, vagas/elegibilidade, notificações e transições.
+- **Limite de participação:** definir como impedir, inclusive em operações simultâneas, mais de um PI e uma Extensão por estudante; atividade classificada em ambos ocupa os dois limites.
+- **Bancas/avaliação:** caderno elimina bancas e agenda; a base atual descreve banca/agendamento. Escolher a jornada antes de modelar avaliações.
+- **Notas:** definir escala, precisão, fórmula, pesos, arredondamento, avaliações ausentes, quem cria/finaliza/reabre e o que é visível a estudantes versus público. Caderno propõe critérios/pesos definidos pelo responsável PI e não manter histórico; reconciliar com auditoria vigente.
+- **Arquivos:** definir MIME real e tamanho máximo. PDF/DOCX/imagens são os formatos citados, não limites aprovados. Separar acesso privado do projeto de publicação; decidir consentimento para fotos, menores e terceiros.
+- **Critério:** não publicar campos/constraints/API até os critérios e decisões correspondentes estarem aprovados.
 
-- A quantidade de avaliações pode variar; não se impõe quantidade fixa.
-- Docente responsável valida horas; qualquer docente pode adicionar avaliação de extensão; estudantes podem avaliar colegas.
-- No PI, docente responsável define critérios e pesos; coordenação atribui qual estudante avalia qual projeto e em qual data.
-- Docente pode criar formulário. A nota é ponderada pelos critérios/pesos definidos pelo responsável PI.
-- Caderno propõe não usar bancas nem agendar sala/link. Responsável PI finaliza, reabre ou corrige avaliação; avaliação individual docente fica visível a estudantes do projeto. Nota geral do projeto pode ser pública.
-- Caderno propõe não manter histórico anterior de nota/hora.
+## PG-009 — Épico e requisitos de Extensão
 
-### Arquivos e horas
+**Regra candidata:** coordenação controla janelas de inscrição; docente responsável define e valida horas; avisos podem ser gerais ou específicos de projeto.
 
-- Formatos citados: PDF, DOCX e imagens; limite de tamanho não definido.
-- Estudantes do projeto, docentes e administradores podem ver arquivos. Edição permitida até início da avaliação; inscrição, edição de arquivo e avaliação têm períodos distintos.
-- Professor responsável define horas concedidas e valida horas. Estudante pode enviar/corrigir informação durante o período do projeto; após prazo não pode alterar.
-- Caderno afirma simultaneamente que prazo de fases não pode ser prorrogado e que responsável pode ajustar prazo. Contradição a resolver.
-- Retenção permanente dos arquivos em AWS sem backup/redundância foi sugerida, mas depende de aprovação de Infra/Segurança e política institucional.
+**Alinhamento necessário nesta issue:** separar edital, atividade/projeto e aviso; definir atores, calendário/fuso UTC-3, elegibilidade, vagas, inscrição duplicada, cancelamento e a relação entre inscrição e participação. Não presumir que aviso equivale a edital.
 
-## Conflitos que bloqueiam promoção à baseline
+## PG-010 — SPEC-EXT-001..003
 
-1. **AUTH:** login local CPF versus OIDC/OAuth2 aprovado na base; redefinição manual versus fluxo de token previsto em cards e contrato. Escolher identidade, bootstrap, recuperação, prova de identidade e sessão.
-2. **Papéis:** coordenação acadêmica, administrador técnico, docente e aluno precisam de matriz explícita; esclarecer papéis acumulados e escopo de autorização por projeto/turma.
-3. **PI / avaliações:** caderno elimina bancas e agenda; baseline atual prevê banca, agendamento e atribuição docente. Decidir se a jornada será substituída, limitada ou mantida.
-4. **Auditoria e histórico:** caderno diz que não haverá histórico de nota/hora nem auditoria; arquitetura e Must Haves atuais exigem rastreabilidade para ações sensíveis. Decisão de Produto, Segurança e Banco é obrigatória antes de remover controles.
-5. **Publicação e imagem:** delimitar dados públicos, consentimento, tratamento de menores/terceiros, aprovação e retirada do conteúdo.
-6. **Arquivos:** retenção permanente sem cópia de recuperação precisa de análise de risco, privacidade, custo e recuperação antes de virar regra operacional.
-7. **Prazos de Extensão:** esclarecer se docente pode prorrogar; definir fuso, momentos de corte e comportamento de submissão no limite.
-8. **Código HYBRID:** a regra de uma atividade de Extensão contar simultaneamente para limites de PI e Extensão não aprova, por si só, o valor literal `HYBRID` no enum `project_type`. Manter o enum em aberto até decisão formal.
-9. **Edital versus aviso:** não assumir que aviso geral/de projeto é a mesma entidade do edital de Extensão.
+- **Prazos:** o caderno diz que fases não podem ser prorrogadas e também que docente pode ajustar prazo. Resolver a contradição; definir fuso e regra para submissão no instante limite.
+- **Horas:** decidir unidade, limites, evidência aceita, correção, recusa/motivo e cálculo de total. O responsável docente valida; esclarecer se qualquer docente pode avaliar extensão e quem finaliza/corrige.
+- **Histórico/auditoria:** caderno propõe não guardar histórico de horas/notas; reconciliar com controles atuais antes de modelar atualização ou exclusão.
+- **Certificado:** aprovar elegibilidade, conteúdo, assinatura/QR, validade, revogação e reemissão.
+- **Arquivos AWS:** retenção permanente sem backup foi sugestão, não política. Infra/Segurança deve revisar privacidade, custo e recuperação antes de fechar retenção.
 
-## Informação ainda necessária — trabalho atual (Sprints 0, 1 e 2)
+## PG-011 — Épico e requisitos do Portal
 
-- **S0 / Produto e governança:** resolver os conflitos acima; aprovar SPECs com critérios testáveis, responsável e fonte; fechar contrato AUTH referenciado mas ausente; delimitar campos públicos; definir fronteiras de PI/Extensão/Portal; decidir auditoria mínima. Sem isso, S0 pode documentar Draft e perguntas, mas não declarar regras aprovadas.
-- **S0 / Banco:** convenções, IDs, timestamps, schemas, migrations repetíveis e banco vazio podem avançar; seeds devem ser sintéticas e não inventar usuários, papéis ou regras não aprovados. Modelo lógico de domínio só fixa campos/constraints depois de requisitos aceitos.
-- **S1 / AUTH:** normalização/validação CPF e unicidade; campos e template CSV; tratamento de erros, duplicatas, reimportação parcial e atualização; bootstrap de senha; autenticação e sessão; processo seguro para reset manual ou token; revogação de sessões; escopo e concessão/revogação de papéis; distinção coordenação/admin.
-- **S1 / PI:** campos mínimos e semântica de status/semestre; continuidade e troca de participantes; quem vê rascunho; elegibilidade e vagas; regra atômica de limite simultâneo PI/Extensão e híbrido; aluno cancelar/desistir/editar pedido; aprovação/negação e notificações; busca manual de proposta equivalente.
-- **S2 / avaliação, arquivos e horas:** resolver banca versus avaliação avulsa; escala, precisão, pesos, arredondamento e avaliações ausentes; quem finaliza avaliação de extensão; prazos e fuso; limite/tipos MIME e varredura de arquivos; consentimento e visibilidade por campo; total de horas e evidência necessária; motivo e fluxo de correção; política de histórico e auditoria.
-- **S2 / API e dados:** contratos de transição de estados, constraints e tratamento de concorrência; identificador de atividade/edital para inscrição; retenção e exclusão lógica/física; seeds que cubram perfis/estados aprovados sem PII real. Registrar cada bloqueio na SPEC/card dono.
+**Regra candidata:** projeto só é público quando docente opta pela publicação; docente deve considerar consentimento de imagens.
 
-## Lacunas para Sprints 3, 4, 5 e 6
+**Alinhamento necessário nesta issue:** delimitar conteúdo anônimo e autenticado, dados pessoais, parceiros, imagens, autorização de menores/terceiros, quem aprova e como retirar publicação. Separar visibilidade de arquivo interno da apresentação pública.
 
-- **S3 — rubricas/notas, auditoria, certificados e catálogo:** escala/fórmula/arredondamento e versionamento de rubricas; regras de certificação, elegibilidade, assinatura, QR, revogação/reemissão e conteúdo; campos permitidos no catálogo, filtros/ordem/paginação/cache e retirada; política final de eventos, retenção, acesso e imutabilidade de auditoria.
-- **S4 — impacto e inscrições de extensão:** origem e aprovação do dado de impacto; janela/fuso, elegibilidade, capacidade/vagas, duplicidade, cancelamento e mudança de prazo; relação formal entre edital, projeto e atividade; avisos e certificado associados.
-- **S5 — performance, backup e conexões:** metas quantitativas, perfil/carga/dataset de teste, limites de instância/pool; RPO/RTO, frequência e retenção de backup do banco; teste de restauração e acessos; política de backup/replicação de arquivos AWS (o caderno sugeriu ausência, ainda não aprovada); critérios de rollback e correção de findings.
-- **S6 — documentação e release:** runbook validado por alguém além do autor; dicionário de dados alinhado às migrations; critérios de go/no-go, smoke/regressão, acessibilidade/segurança, responsáveis e rollback; aprovação formal de exceções, campos públicos e retenção antes de liberar.
+## PG-012 — SPEC-PORTAL-001..002
 
-## Ação de governança
+Definir junto aos critérios desta SPEC: campos públicos, busca/filtros/ordenação/paginação, comportamento de rascunho, cache e retirada; fonte/aprovação de impacto social e autorização de imagem. Caderno não aprova automaticamente qualquer campo público. Só conteúdo permitido e aprovado pode entrar no catálogo.
 
-Atualizar as SPECs correspondentes e registrar decisões por ADR/decision log após validação do PO, responsáveis técnicos e Segurança/Infra onde aplicável. Até então, marcar as regras derivadas do caderno como candidatas, manter conflito visível e não encerrar critérios de aceite dependentes como se estivessem aprovados. Reavaliar os PDFs por equipe após aprovação; esta versão dos guias cobre apenas cards S0-S2.
+## Dependências técnicas associadas às mesmas decisões
+
+- **DB-004..006 / AUTH:** identidade local versus externa, CPF/CSV e matriz RBAC precisam ser decididos antes de constraints e seeds.
+- **DB-007 / auditoria:** não afrouxar `public.audit_event` até decisão formal sobre histórico e eventos sensíveis.
+- **DB-008..010 / PI:** fluxo convite versus solicitação, banca versus avaliação e política de nota devem preceder modelo e constraints.
+- **DB-011 / arquivos:** tamanho, acesso, consentimento e retenção precedem metadados e lifecycle.
+- **DB-012..013 / Extensão e horas:** o card DB-012 está fechado e é histórico; para implementação ativa, definir edital/atividade, janelas, fuso, elegibilidade e prazos antes de constraints.
+- **INF-005, INF-010 e INF-011 / Cloud:** separar backups do PostgreSQL da retenção de arquivos; manter arquivos privados; não configurar lifecycle/expiração nem cache público sem política aprovada.
+- **QA-008..015 / QA:** casos de teste dependem das decisões AUTH, RBAC, convites, editais, bancas, arquivos e horas; sem regra aprovada, registrar o caso como bloqueado, não inventar resultado esperado.
+- **Cards Frontend/Backend:** exibir e executar somente o contrato aprovado; UI, tabela ou API não decide regra acadêmica.
+
+## O que falta para desenvolvimento
+
+### Atual — Sprints 0, 1 e 2
+
+- **S0:** aprovar SPECs/contratos e resolver conflitos de AUTH, banca, auditoria, publicação e retenção; fechar o contrato AUTH referenciado mas ausente. Convenções, banco vazio e seeds sintéticas podem avançar sem inventar regras.
+- **S1:** normalizar CPF/CSV; definir bootstrap, reset e papéis; concluir campos/estados de projeto, visibilidade, elegibilidade, desistência, convites versus pedidos e limite simultâneo PI/Extensão.
+- **S2:** decidir banca versus avaliação; escala/pesos/arredondamento; direitos de revisão; formatos/tamanho/consentimento de arquivos; fluxo de horas, evidências, prazo/fuso/prorrogação; retenção e auditoria.
+
+### Futuro — Sprints 3, 4, 5 e 6
+
+- **S3:** fórmula/versionamento de rubricas; certificado; campos do catálogo; política de auditoria e retenção.
+- **S4:** impacto social; relação edital-atividade-projeto; vagas, inscrição, cancelamento, prazos e fuso.
+- **S5:** metas de carga; RPO/RTO; retenção/backup do banco; política separada para arquivos; restauração e rollback testados.
+- **S6:** runbooks e dicionário coerentes com as migrations; critérios de homologação/go-no-go, segurança, acessibilidade, rollback e exceções aprovadas.
+
+Até a decisão formal, anotar dúvidas na issue/SPEC que depende delas, indicar responsável pela decisão e bloquear somente os critérios afetados. Não mover a pessoa entre páginas para encontrar o refinamento de uma regra da própria issue.
