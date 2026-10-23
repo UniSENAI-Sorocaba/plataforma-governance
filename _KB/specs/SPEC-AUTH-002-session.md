@@ -25,13 +25,14 @@ Manter sessões institucionais renováveis e revogáveis, com rotação de refre
 - **AC-AUTH-002-04 — Logout:** Dada uma sessão autenticada, quando o usuário fizer logout, então o refresh token é invalidado server-side e removido do cliente; uma tentativa posterior de renovação falha.
 - **AC-AUTH-002-05 — Expiração:** Quando o access token atingir 15 minutos de validade, então ele deixa de ser aceito; uma renovação requer sessão e refresh token válidos.
 
-## Decisões pendentes para aprovação
-1. Vida útil do refresh token, expiração por inatividade e expiração absoluta.
-2. Escopo de revogação quando houver reutilização (token, sessão, família ou todas as sessões do usuário).
-3. Semântica de logout: apenas dispositivo atual ou todas as sessões; efeito imediato sobre access tokens já emitidos.
-4. Concorrência entre renovações, tolerância de relógio e comportamento para múltiplas abas/dispositivos.
-5. Path/domain do cookie e proteções CSRF/origin compatíveis com os clientes previstos.
-6. Eventos e evidências para tentativas recusadas, alinhados a SPEC-AUTH-004.
+## Alinhamento pendente (propostas do caderno não aprovadas)
+- O caderno sugere reset manual; decidir se o fluxo vigente de recuperação por token permanece ou muda. Se houver reset manual, aprovar verificação, autoridade, expiração, troca obrigatória e efeito sobre sessões existentes.
+- Confirmar duração absoluta/inatividade do refresh token, alcance de logout/revogação, escopo de revogação por reutilização, concorrência entre renovações e política de múltiplas abas/dispositivos.
+- Aprovar expiração e revogação imediata, cookie e proteção CSRF/origin para clientes previstos.
+- Produto e Segurança aprovam política; Backend/arquitetura definem compatibilidade técnica sem escolher regra de negócio.
+
+## Trabalho dependente da decisão
+Backend/DB implementam sessão, rotação, revogação e estado conforme política; Frontend integra login/logout/renovação; QA testa expiração, reutilização, logout, concorrência e falhas. Eventos devem seguir SPEC-AUTH-004.
 
 ## Dependências e rastreabilidade
 REQ-AUTH-002; MH-SEC-004; ADR-003; SPEC-AUTH-004; PG-006. Critérios e políticas de sessão precisam de revisão do PO, Backend e Segurança antes de mudar o status.
