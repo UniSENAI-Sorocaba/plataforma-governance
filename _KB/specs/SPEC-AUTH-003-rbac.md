@@ -23,12 +23,14 @@ Os perfis institucionais identificados em ADR-003 incluem Aluno, Docente, Coorde
 - **AC-AUTH-003-04 — Acesso negado:** Dado um usuário sem a permissão exigida, quando solicitar a ação, então o servidor nega a operação e não altera o recurso.
 - **AC-AUTH-003-05 — Interface:** Quando a interface ocultar ou desabilitar ações sem permissão, então a API continua aplicando a mesma autorização independentemente da interface.
 
-## Decisões pendentes para aprovação
-1. Matriz versionada de papéis × ações × recursos, incluindo escopo por curso, turma, unidade e propriedade do recurso quando aplicável.
-2. Quem pode atribuir/remover papéis, quais papéis podem coexistir e como mudanças entram em vigor.
-3. Política para usuário sem papel, permissão desconhecida ou indisponibilidade da fonte de permissões.
-4. Formato de resposta de acesso negado e quais tentativas devem gerar auditoria.
-5. Como a matriz será testada e evidenciada; cada regra aprovada deve mapear para casos positivos e negativos.
+## Alinhamento pendente (propostas do caderno não aprovadas)
+- Aprovar matriz versionada de papéis × ações × recursos e escopo por turma/projeto/unidade.
+- Decidir se múltiplos papéis acumulam permissões, quais papéis podem coexistir e quem pode atribuir/remover cada papel.
+- Definir usuário sem papel, permissão desconhecida, mudança de papel em sessão ativa e indisponibilidade da fonte de permissões.
+- O conjunto de perfis em ADR-003 não equivale a uma matriz de autorização completa. PO/coordenação aprova regras; Segurança revisa menor privilégio.
+
+## Trabalho dependente da decisão
+Backend aplica autorização server-side e negação por padrão; DB guarda papéis/escopos se aprovados; Frontend reflete ações disponíveis sem substituir a API; QA testa matriz positiva e negativa, escopo cruzado e mudanças de papel.
 
 ## Dependências e rastreabilidade
 REQ-AUTH-003; MH-SEC-002; ADR-003; SPEC-AUTH-001; SPEC-AUTH-004; PG-006. A matriz é bloqueadora para implementação funcional completa e aprovação do SPEC.
