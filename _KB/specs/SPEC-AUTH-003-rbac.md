@@ -31,5 +31,14 @@ Matriz completa de ações e escopos por papel, quem atribui/remove cada funçã
 ## Trabalho das equipes
 Backend implementa autorização; DB persiste funções e vínculos; Frontend reflete permissões; QA cobre matriz allow/deny, escopo de projeto e combinação de papéis.
 
+## Matriz de cenários de autorização
+- **AC-AUTH-003-01 — Acumular funções:** atribuir duas funções à mesma pessoa mantém um cadastro por CPF; após autenticar, a API permite cada ação autorizada a pelo menos uma das funções sem criar conta duplicada.
+- **AC-AUTH-003-02 — Coordenação:** usuário sem permissão de coordenação não importa CSV, mantém cadastro nem inativa aluno/turma.
+- **AC-AUTH-003-03 — Escopo docente:** docente autorizado no projeto pode aprovar/remover participantes; docente sem vínculo/escopo não altera o projeto. A regra para projetos com mais de um responsável deve ser confirmada antes de codificar a seleção de responsáveis.
+- **AC-AUTH-003-04 — Justificativa:** remoção sem justificativa é rejeitada sem retirar o vínculo; remoção válida conserva a justificativa associada à operação conforme a regra de produto. Não criar histórico de auditoria, vedado pelo caderno.
+- **AC-AUTH-003-05 — Acesso de aluno:** aluno pode enviar/corrigir informações dentro do período aplicável; operações administrativas de aprovação, remoção, validação de horas ou arquivamento são negadas.
+- **AC-AUTH-003-06 — Negação no servidor:** chamar diretamente a API sem a permissão necessária produz negação mesmo que o cliente mostre/force a ação; resposta não expõe dados fora do escopo.
+- Para ações e escopos que o caderno não atribui, manter negação por padrão e abrir decisão de produto antes de conceder permissões.
+
 ## Rastreabilidade
 EPIC-AUTH-001; REQ-AUTH-003; PG-006; SPEC-AUTH-001; [regras oficiais](../product/official-validation-decisions.md).
