@@ -9,19 +9,21 @@ legacy_aliases: [US08]
 ---
 # Entregáveis
 
-## Objetivo
-Enviar relatórios e artefatos para armazenamento autorizado, com limites e integridade. Esta SPEC permanece Draft para as regras de formato, acesso, publicação e retenção.
+## Regras oficiais
+- Formatos citados para entrega: PDF, DOCX e imagens. Limite de tamanho ainda não definido.
+- Arquivos podem ser vistos por todos os alunos vinculados ao projeto e por usuários docentes ou administradores.
+- Arquivos podem ser alterados até o início da avaliação.
+- Docente responsável decide se foto será publicada, considerando menores de idade e terceiros.
+- Orientação para arquivos do projeto: manter permanentemente na AWS, sem backup e sem redundância. Esta regra de arquivos não define backup do banco de dados.
 
-## Alinhamento pendente
-PO/coordenação, Segurança/Privacidade e Cloud devem definir:
-- Tipos MIME permitidos e tamanho máximo; PDF, DOCX e imagens citados no caderno são exemplos, não limites aprovados.
-- Quem pode enviar, visualizar, substituir ou excluir arquivos e em que estado do projeto.
-- Diferença entre arquivo interno do projeto e conteúdo selecionado para divulgação pública.
-- Consentimento para imagens de estudantes, menores, parceiros e terceiros; registro e retirada da autorização.
-- Retenção/exclusão, backup e recuperação. A proposta de armazenamento permanente sem backup na AWS não é política aprovada e não define backup do banco.
+## Critérios de aceite que a especificação deve completar
+Validar tipo e tamanho após aprovação do limite; autorizar visualização só para atores permitidos; permitir alteração somente até o início da avaliação; publicação de foto só com autorização definida pelo docente responsável.
 
-## Trabalho dependente da decisão
-Após aprovação, Backend valida upload e autorização; DB mantém metadados necessários; Cloud configura armazenamento, acesso e ciclo de vida; Frontend informa formatos/limites e permite as ações autorizadas; QA testa arquivos inválidos, tamanho, permissões, retirada e recuperação prevista.
+## Detalhes ainda não definidos
+Tamanho máximo, MIME permitido, upload/substituição/exclusão, armazenamento/custos, registro da autorização da foto e retirada pública. O caderno não especifica requisitos para backup do banco neste fluxo.
+
+## Trabalho das equipes
+Backend valida upload e acesso; DB guarda somente metadados necessários; Cloud configura o armazenamento conforme a decisão oficial; Frontend explica formatos e janela de edição; QA testa formatos, limites, permissões e visibilidade de fotos.
 
 ## Rastreabilidade
-PG-008; REQ-PI-004; EPIC-PI-001; INF-005/010/011. Mapa cruzado: [KB de reconciliação](../product/functional-rules-reconciliation.md).
+EPIC-PI-001; REQ-PI-004; PG-008; INF-005/010/011; [regras oficiais](../product/official-validation-decisions.md).
