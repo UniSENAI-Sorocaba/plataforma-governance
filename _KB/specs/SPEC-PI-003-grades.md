@@ -9,19 +9,22 @@ legacy_aliases: [US07]
 ---
 # Rubricas e notas
 
-## Objetivo
-Lançar avaliações por rubrica e calcular resultado consolidado de forma determinística e auditável. Esta SPEC permanece Draft até aprovação dos critérios acadêmicos.
+## Regras oficiais
+- Nota do PI é ponderada conforme critérios e pesos definidos pelo docente responsável pelo PI.
+- O docente responsável pode criar a ficha/rubrica, finalizar, reabrir ou corrigir a avaliação.
+- Alunos podem avaliar outros alunos; coordenação atribui avaliador e data.
+- Qualquer docente pode adicionar avaliação para projeto de Extensão.
+- Nota do projeto pode ser pública; avaliações individuais feitas por docente são visíveis somente aos alunos daquele projeto. Notas individuais não são públicas.
+- Não é necessário manter histórico de valores anteriores de notas.
 
-## Alinhamento pendente
-PO/coordenação acadêmica e docentes representantes devem aprovar:
-- Escala, precisão, fórmula, pesos e regra de arredondamento.
-- Avaliação ausente, rubrica aplicável, responsável por criar/finalizar/reabrir e processo de revisão/contestação.
-- Visibilidade da nota para estudante, equipe, docente e público.
-- Histórico de alterações: o caderno sugere não mantê-lo; reconciliar com Must Haves de auditoria e política de retenção.
-- Se rubricas e critérios são definidos pelo responsável de PI e como são versionados após a avaliação começar.
+## Critérios de aceite que a especificação deve completar
+Cálculo reproduzível com pesos definidos para o PI; acesso restrito às notas individuais; nota pública somente no nível do projeto; finalização, reabertura e correção pelo docente responsável; nenhum histórico de valores anteriores.
 
-## Trabalho dependente da decisão
-Após aprovação, Backend implementa cálculo reproduzível e permissões; DB armazena critérios/resultados e histórico conforme política; Frontend apresenta lançamento e consulta; QA valida cálculos com exemplos aprovados, limites, arredondamento e histórico. Critérios devem incluir casos positivos e de erro.
+## Detalhes ainda não definidos
+Escala, precisão, arredondamento, tratamento de critério sem peso, avaliação ausente, acesso a avaliações feitas por alunos, motivo de correção e momento de bloqueio da ficha.
+
+## Trabalho das equipes
+Backend implementa cálculo/permissões; DB armazena valores atuais e rubrica sem histórico anterior; Frontend apresenta notas visíveis ao papel; QA verifica cálculo com exemplos aprovados, autorização e visibilidade.
 
 ## Rastreabilidade
-PG-008; REQ-PI-003; EPIC-PI-001; SPEC-PI-002 e SPEC-AUTH-004. Mapa cruzado: [KB de reconciliação](../product/functional-rules-reconciliation.md).
+EPIC-PI-001; REQ-PI-003; PG-008; SPEC-PI-002; SPEC-AUTH-004; [regras oficiais](../product/official-validation-decisions.md).
