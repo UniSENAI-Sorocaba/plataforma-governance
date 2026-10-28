@@ -7,21 +7,20 @@ requirements: [REQ-EXT-001]
 affected_systems: [backend, frontend, database]
 legacy_aliases: [US09]
 ---
-# Editais e inscrições
+# Avisos, editais e inscrições
 
-## Objetivo
-Publicar editais e permitir inscrições conforme janela e elegibilidade. Esta SPEC permanece Draft; a proposta do caderno não deve ser tratada como regra aprovada.
+## Regras oficiais
+- Docentes e coordenação podem publicar avisos, gerais ou destinados a um projeto específico. Aviso não é automaticamente edital.
+- Coordenação define datas dos períodos de inscrição; elas podem ser alteradas. Fuso UTC-3 (Brasília).
+- Aluno solicita participação durante o período; docente aprova ou nega.
+- Depois de o aluno ser aprovado no projeto, somente docente pode alterar sua inscrição/participação.
+- Os projetos podem ser publicados no site público por opção do docente responsável.
 
-## Alinhamento pendente
-PO/coordenação de Extensão e docentes responsáveis devem definir:
-- Se edital é entidade própria e sua relação com atividade, projeto e participação.
-- Diferença entre edital, aviso geral e aviso de projeto; quem cria, publica e encerra cada tipo.
-- Quem controla a janela, fuso de negócio e regra de envio no instante limite.
-- Elegibilidade, capacidade/vagas, duplicidade, cancelamento e quando inscrição vira participação confirmada.
-- Como esta jornada se relaciona aos limites PI/Extensão da SPEC-PI-001.
+## Detalhes ainda não definidos
+Se edital é entidade própria e sua relação com aviso, projeto e atividade; elegibilidade, vagas, inscrição duplicada, cancelamento, prazos no instante-limite, notificações e quem altera o período. O conflito de prorrogação de etapas de extensão está referenciado em SPEC-EXT-002.
 
-## Trabalho dependente da decisão
-Após aprovação, Backend/DB implementam entidades, relações, estados e validações; Frontend apresenta edital/aviso e estado da inscrição; QA verifica elegibilidade, janelas, vagas, duplicidade, cancelamento e fuso.
+## Trabalho das equipes
+Backend/DB implementam avisos e inscrições sem tratar entidades como sinônimas; Frontend apresenta público, janela e status; QA valida papéis, fuso, abertura/fechamento e duplicidade conforme regras que vierem a ser completadas.
 
 ## Rastreabilidade
-PG-009/PG-010; REQ-EXT-001; EPIC-EXT-001; SPEC-PI-001. Mapa cruzado: [KB de reconciliação](../product/functional-rules-reconciliation.md).
+EPIC-EXT-001; REQ-EXT-001; PG-009/PG-010; SPEC-PI-001; [regras oficiais](../product/official-validation-decisions.md).
