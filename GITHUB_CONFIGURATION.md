@@ -14,7 +14,7 @@ Decisões:
 - Fellipe Raszejas (`@FellipeRaszejas`) é **Product Owner (PO)**.
 - `new_teams.md` é a fonte de verdade da composição das equipes.
 - O trabalho é controlado por Issues e por um único GitHub Project organizacional.
-- O desenvolvimento usa GitHub Flow, com `main` protegida e releases por tag.
+- O desenvolvimento usa fluxo de integração em `develop`: todo PR de desenvolvimento deve ser direcionado a `develop`; `main` é protegida e recebe apenas promoções aprovadas de `develop`, com releases por tag.
 - Regras normativas ficam em um repositório de governança e são consumidas por tag e commit imutáveis.
 
 ### Plano GitHub adotado
@@ -43,7 +43,8 @@ Criar ou validar os seguintes repositórios privados:
 
 Configuração comum:
 
-- branch padrão `main`;
+- branch padrão `develop` para integração;
+- branch `main` protegida para releases e promoções aprovadas de `develop`;
 - Issues, Projects e Discussions habilitados no repositório de governança; Issues habilitadas nos demais;
 - Wiki desabilitada para evitar fonte documental concorrente;
 - merge commits desabilitados; squash merge habilitado; rebase opcional;
@@ -78,7 +79,7 @@ Princípios:
 
 ## 4. Rulesets de branches e tags
 
-Aplicar o mesmo ruleset à branch `main` **individualmente em cada repositório**. A centralização organizacional descrita na versão anterior foi removida por exigir Enterprise:
+Aplicar o ruleset de desenvolvimento à branch `develop` **individualmente em cada repositório**. A centralização organizacional descrita na versão anterior foi removida por exigir Enterprise. Todo PR de desenvolvimento deve ter `develop` como branch de destino:
 
 - pull request obrigatório;
 - ao menos 1 aprovação; 2 para governança Level 0/1, segurança, produção e migrations destrutivas;
@@ -90,6 +91,8 @@ Aplicar o mesmo ruleset à branch `main` **individualmente em cada repositório*
 - bloquear merge quando houver check obrigatório pendente ou com falha;
 - restringir bypass aos administradores, somente para incidente documentado;
 - exigir commits assinados quando o plano da organização oferecer suporte adequado.
+
+Aplicar também à branch `main` um ruleset de promoção, permitindo somente PRs de `develop` e releases aprovadas. A `main` não deve receber PRs de branches de trabalho.
 
 Checks comuns: `lint`, `build`, `unit-tests`, `secret-scan`, `dependency-review`, `codeql` e `spec-compliance`.
 
