@@ -9,19 +9,14 @@ legacy_aliases: [US13]
 ---
 # Impacto comunitário
 
-## Objetivo
-Publicar impacto e prestação social apenas após aprovação e com origem rastreável. Esta SPEC permanece Draft; o caderno não aprova automaticamente campos públicos.
+## Regra oficial aplicável
+A nota do projeto pode ser pública; horas e notas individuais de alunos não são públicas. Projetos publicados dependem de opção do docente responsável. O caderno não define indicadores ou métricas de impacto comunitário.
 
-## Alinhamento pendente
-PO/coordenação, docentes e Segurança/Privacidade devem definir:
-- Indicadores e campos de impacto (incluindo fonte, período, método de cálculo e responsável pela validação).
-- Se contagens/resumos são informados por docente, calculados pela plataforma ou importados; como corrigir dado publicado.
-- Quais informações são públicas e como evitar exposição de pessoas beneficiárias, parceiros ou dados pessoais.
-- Aprovação, atualização e retirada do conteúdo; se a decisão também requer autorização de imagens ou relatos.
-- Evidência de origem e histórico de alterações necessários para prestação social.
+## Detalhes pendentes
+Indicadores, campos, fonte, período, método de cálculo, validação, autorização para relatos/imagens, proteção de pessoas beneficiárias e processo de correção/retirada.
 
-## Trabalho dependente da decisão
-Após aprovação, Backend/DB implementam campos, origem e validação; Frontend apresenta somente os indicadores aprovados; QA verifica fonte, consistência, permissões e retirada. Qualquer cálculo deve ter regra e exemplos de validação aprovados.
+## Trabalho das equipes
+Produto define os indicadores e critérios que o caderno não cobre; Backend/DB implementam origem e validação; Frontend apresenta dados aprovados; QA verifica consistência, permissão e privacidade.
 
 ## Rastreabilidade
-PG-011/PG-012; REQ-PORTAL-002; EPIC-PORTAL-001; SPEC-PORTAL-001. Mapa cruzado: [KB de reconciliação](../product/functional-rules-reconciliation.md).
+EPIC-PORTAL-001; REQ-PORTAL-002; PG-011/PG-012; SPEC-PORTAL-001; [regras oficiais](../product/official-validation-decisions.md).
