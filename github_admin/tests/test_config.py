@@ -1,10 +1,12 @@
 import json
+from pathlib import Path
 
 from github_admin.config import load_config, validate_config
 
 
 def test_example_config_is_valid():
-    config = load_config("config/github.example.json")
+    config_path = Path(__file__).parents[1] / "config" / "github.example.json"
+    config = load_config(config_path)
     assert config.organization == "UniSENAI-Sorocaba"
     assert len(config.repositories) == 6
     assert len(config.teams) == 9
