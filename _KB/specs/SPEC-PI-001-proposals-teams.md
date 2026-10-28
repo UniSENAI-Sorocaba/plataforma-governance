@@ -10,18 +10,29 @@ legacy_aliases: [US05]
 # Propostas e equipes
 
 ## Objetivo
-Captar propostas de PI/Extensão e formar equipes. Esta especificação permanece Draft; as regras candidatas abaixo ainda exigem decisão em PG-008.
+Cadastrar projetos de PI/Extensão e gerenciar participação de alunos segundo as decisões oficiais do caderno.
 
-## Alinhamento pendente
-O card/base atual menciona convite; o caderno propõe que o estudante solicite participação em uma janela e o docente aceite ou negue, sem convite individual. Produto/coordenação acadêmica e docentes devem decidir:
-- Jornada oficial e estados: convite, solicitação, aprovação/negação, desistência e remoção.
-- Elegibilidade, janela, vagas, notificações e motivo obrigatório na remoção pelo docente.
-- Regras na troca de semestre e conta/aluno vinculado a mais de uma turma.
-- Limite de no máximo um PI e uma Extensão por estudante; como tratar projeto/atividade classificado em ambos e solicitações concorrentes.
-- Categorias PI/Extensão: não inferir que participação contada em ambas aprova um tipo `HYBRID`.
+## Regras oficiais
+- Docentes cadastram propostas e verificam manualmente se já existe proposta equivalente; o sistema não bloqueia duplicidades.
+- Um projeto pode ser contínuo ou ter data de encerramento. Participantes podem mudar a cada semestre.
+- No cadastro, docente escolhe rascunho ou publicado. Rascunho fica disponível a alunos autenticados; publicado aparece no site público.
+- Todo projeto tem pelo menos um docente responsável.
+- Não há convites individuais: durante período de inscrição, aluno solicita participação; docente aprova ou nega.
+- Docente pode remover participante e registra justificativa.
+- Cada aluno participa de no máximo um projeto de PI e um de Extensão por vez. Projeto que conta para ambos ocupa ambos os limites.
+- Somente docente pode reabrir ou arquivar projeto.
 
-## Trabalho dependente da decisão
-Após aprovação, Backend/DB implementam estados, vínculos, limites consistentes e autorização; Frontend implementa a jornada escolhida; QA testa transições, negativas, desistência, concorrência e limite por categoria. Critérios e regra aprovada devem ser registrados antes de retirar Draft.
+## Transições cobertas por esta SPEC
+- Proposta criada como rascunho ou publicada pelo docente.
+- Publicação torna o projeto visível no site público; rascunho fica restrito a alunos autenticados.
+- A participação segue solicitação do aluno e decisão de aprovação/negação do docente durante período de inscrição.
+- Docente responsável remove aluno com justificativa; docente pode reabrir ou arquivar projeto.
+
+## Detalhes ainda não definidos
+Campos mínimos, ciclo detalhado de edição/submissão, nomes e estados intermediários, quem abre/fecha janela, elegibilidade, vagas, desistência/reenvio, notificações, troca de semestre, coexistência de docentes responsáveis e tratamento transacional de solicitações concorrentes. Não adicionar convite individual.
+
+## Trabalho das equipes
+Backend/DB implementam as transições e limites no servidor/banco; Frontend apresenta rascunho/publicação e pedido de participação; QA testa transições válidas/inválidas, papéis, justificativa, visibilidade, limites e concorrência.
 
 ## Rastreabilidade
-PG-007/PG-008; REQ-PI-001; EPIC-PI-001. Mapa cruzado: [KB de reconciliação](../product/functional-rules-reconciliation.md).
+EPIC-PI-001; REQ-PI-001; PG-007/PG-008; BE-007/BE-008; [regras oficiais](../product/official-validation-decisions.md).
