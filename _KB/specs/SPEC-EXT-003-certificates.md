@@ -9,19 +9,14 @@ legacy_aliases: [US11]
 ---
 # Certificados
 
-## Objetivo
-Emitir certificado PDF com mecanismo de validação pública. Esta SPEC permanece Draft até aprovação das regras institucionais de emissão e validação.
+## Escopo
+O Caderno de Validações não define regras completas de emissão ou validação de certificados. Não inferir critérios de elegibilidade, assinatura, QR, validade ou revogação a partir das regras de horas.
 
-## Alinhamento pendente
-PO/coordenação de Extensão e responsável institucional por certificados devem definir:
-- Elegibilidade e dados que serão exibidos no certificado.
-- Quem pode emitir e quando a emissão fica disponível (por exemplo, após validação das horas).
-- Assinatura, QR/hash e dados apresentados na validação pública; quais campos podem ser consultados sem login.
-- Validade, revogação, correção e reemissão; histórico da ação.
-- Retenção, armazenamento e política de backup/recuperação do arquivo.
+## Detalhes pendentes
+Responsável institucional, critérios de elegibilidade, campos do certificado, evento que habilita emissão, assinatura/QR, consulta pública, validade, correção/revogação/reemissão, retenção e backup.
 
-## Trabalho dependente da decisão
-Após aprovação, Backend gera certificado e validação conforme contrato; Frontend mostra emissão/consulta autorizada; DB mantém registros e estado de revogação; Cloud armazena o arquivo segundo política aprovada; QA verifica elegibilidade, integridade, QR/consulta, revogação e reemissão.
+## Trabalho das equipes
+Depois das regras aprovadas, Backend gera certificado e validação; Frontend apresenta emissão/consulta autorizada; DB registra estado necessário; Cloud armazena conforme política; QA valida integridade e permissões.
 
 ## Rastreabilidade
-PG-010; REQ-EXT-003; EPIC-EXT-001; SPEC-EXT-002. Mapa cruzado: [KB de reconciliação](../product/functional-rules-reconciliation.md).
+EPIC-EXT-001; REQ-EXT-003; PG-010; SPEC-EXT-002; [regras oficiais](../product/official-validation-decisions.md).
