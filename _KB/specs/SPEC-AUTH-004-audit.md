@@ -10,25 +10,19 @@ legacy_aliases: [US04]
 ---
 # Auditoria de autenticação e operações críticas
 
-## Objetivo
-Registrar acessos e operações críticas com contexto suficiente para investigação, aplicando minimização de dados. Esta especificação permanece Draft; os critérios abaixo são propostas para revisão em PG-006.
+## Decisão oficial
+O Caderno de Validações determina que não haverá registros de auditoria. Também não se mantém histórico dos valores anteriores de notas e horas. Requisitos anteriores da KB que obrigam trilha de auditoria de negócio conflitam com esta decisão e precisam ser reconciliados.
 
-## Campos mínimos propostos
-Cada evento registrado inclui ator (ou indicação de ator não autenticado), ação, alvo/recurso, instante e identificador de correlação. Campos adicionais só devem ser incluídos quando justificados para investigação e aprovados.
+## Limite
+Esta decisão não autoriza expor senhas, tokens ou segredos. Logs operacionais/técnicos necessários à execução devem ser minimizados e sanitizados; não devem funcionar como trilha persistente de ações de negócio. A política para métricas e logs técnicos precisa ser compatibilizada com segurança sem reintroduzir auditoria funcional.
 
-## Critérios de aceite propostos
-- **AC-AUTH-004-01 — Eventos críticos:** Quando ocorrer login, logout, renovação/revogação de sessão ou operação crítica definida pelo produto, então o sistema registra um evento de auditoria com os campos mínimos aplicáveis.
-- **AC-AUTH-004-02 — Resultado:** O evento registra se a ação foi permitida ou negada, quando esse resultado for necessário para a trilha de auditoria aprovada.
-- **AC-AUTH-004-03 — Minimização:** Quando um evento for gravado, então não inclui senha, access token, refresh token, segredo, nem dados pessoais além do mínimo aprovado, conforme MH-SEC-004 e POL-SEC-001.
-- **AC-AUTH-004-04 — Correlação:** Dado um identificador de correlação da requisição, quando uma ação gerar auditoria, então o evento preserva esse identificador para relacionar a ação aos logs técnicos sem copiar credenciais ou tokens.
-- **AC-AUTH-004-05 — Acesso aos registros:** Quando os eventos forem consultados, então o acesso segue menor privilégio e as consultas são rastreáveis, conforme política a aprovar.
+## Critérios de aceite
+- Não criar persistência de eventos de auditoria de negócio para os fluxos cobertos pelo caderno.
+- Alterações de nota e horas não guardam valores anteriores.
+- Senhas, tokens e segredos não aparecem em logs, erros ou métricas.
 
-## Decisões pendentes para aprovação
-1. Catálogo exato de eventos auditáveis, incluindo tentativas inválidas e falhas de autorização.
-2. Esquema/tipos dos campos, origem do instante, sincronização de relógio e tratamento de identificadores externos.
-3. Retenção, descarte, exportação e acesso aos registros; papéis autorizados a consultá-los.
-4. Comportamento quando o armazenamento de auditoria estiver indisponível (bloquear ação, fila durável ou outro modo).
-5. Separação operacional entre trilha de auditoria e logs técnicos, e evidência de integridade dos eventos.
+## Trabalho das equipes
+PO/Governança reconciliam Must Haves, ADRs e cards que exigem auditoria de negócio. Backend/DB retiram apenas a trilha incompatível depois da reconciliação; QA verifica ausência de histórico de negócio e ausência de vazamento de credenciais.
 
-## Dependências e rastreabilidade
-REQ-AUTH-004; MH-SEC-004; POL-SEC-001; SPEC-AUTH-001–003; PG-006. Retenção, acesso e comportamento em falha são decisões de produto/segurança e permanecem em aberto até revisão formal.
+## Rastreabilidade
+EPIC-AUTH-001; REQ-AUTH-004; PG-006; SPEC-PI-003; SPEC-EXT-002; [regras oficiais](../product/official-validation-decisions.md). Esta SPEC fica Draft enquanto referências incompatíveis não forem reconciliadas.

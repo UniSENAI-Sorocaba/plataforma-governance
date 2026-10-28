@@ -11,27 +11,21 @@ legacy_aliases: [US02]
 # Sessão, renovação e logout
 
 ## Objetivo
-Manter sessões institucionais renováveis e revogáveis, com rotação de refresh token, logout centralizado e detecção de reutilização. Esta especificação permanece Draft; os critérios abaixo são propostas para revisão em PG-006.
+Definir a duração e o ciclo de vida da sessão local de uma conta autenticada. O caderno é oficial para login local e reset manual, mas não detalha tokens ou sessão.
 
-## Regras de segurança
-- Access token JWT RS256 com expiração de 15 minutos; refresh token opaco em cookie `HttpOnly; Secure; SameSite=Strict`, conforme ADR-003.
-- Tokens e credenciais não podem aparecer em logs (MH-SEC-004).
-- O armazenamento e a revogação server-side devem permitir reconhecer o estado da sessão e tentativas de reutilização, sem armazenar o refresh token em texto puro.
+## Regras oficiais aplicáveis
+- Não há provedor externo de identidade; o acesso usa CPF e senha local.
+- Docente ou coordenação pode redefinir senha de outra pessoa; ela cria nova senha na próxima entrada.
+- Mudança de senha pode ser feita depois do primeiro acesso.
 
-## Critérios de aceite propostos
-- **AC-AUTH-002-01 — Renovação:** Dada uma sessão ativa e um refresh token válido, quando a renovação for solicitada, então o token anterior deixa de ser aceito e um novo refresh token é emitido.
-- **AC-AUTH-002-02 — Token inválido:** Dado um refresh token expirado, revogado ou desconhecido, quando for usado, então a renovação é recusada e nenhum novo token é emitido.
-- **AC-AUTH-002-03 — Reutilização:** Dado um refresh token já rotacionado, quando ele for apresentado novamente, então o evento é detectado, a renovação é recusada e a sessão/família de tokens afetada é revogada conforme a política aprovada.
-- **AC-AUTH-002-04 — Logout:** Dada uma sessão autenticada, quando o usuário fizer logout, então o refresh token é invalidado server-side e removido do cliente; uma tentativa posterior de renovação falha.
-- **AC-AUTH-002-05 — Expiração:** Quando o access token atingir 15 minutos de validade, então ele deixa de ser aceito; uma renovação requer sessão e refresh token válidos.
+## Detalhes ainda não definidos
+Duração de sessão, mecanismo de refresh/logout, expiração por inatividade, concorrência entre sessões/dispositivos e efeito do reset sobre sessões ativas. ADR-003 e CONTRACT-AUTH-001 devem ser revistos para retirar o fluxo incompatível com a autenticação local; seus valores técnicos antigos não são regra de negócio aprovada por esta SPEC.
 
-## Decisões pendentes para aprovação
-1. Vida útil do refresh token, expiração por inatividade e expiração absoluta.
-2. Escopo de revogação quando houver reutilização (token, sessão, família ou todas as sessões do usuário).
-3. Semântica de logout: apenas dispositivo atual ou todas as sessões; efeito imediato sobre access tokens já emitidos.
-4. Concorrência entre renovações, tolerância de relógio e comportamento para múltiplas abas/dispositivos.
-5. Path/domain do cookie e proteções CSRF/origin compatíveis com os clientes previstos.
-6. Eventos e evidências para tentativas recusadas, alinhados a SPEC-AUTH-004.
+## Critérios de aceite que a especificação deve completar
+Definir e testar criação e encerramento de sessão, expiração, reset obrigatório, logout e comportamento de sessões existentes após reset. Credenciais, tokens e segredos nunca aparecem em logs ou respostas.
 
-## Dependências e rastreabilidade
-REQ-AUTH-002; MH-SEC-004; ADR-003; SPEC-AUTH-004; PG-006. Critérios e políticas de sessão precisam de revisão do PO, Backend e Segurança antes de mudar o status.
+## Trabalho das equipes
+Backend/DB implementam o mecanismo de sessão decidido; Frontend integra login, troca de senha e logout; QA valida estados e falhas depois que o ciclo de vida for especificado.
+
+## Rastreabilidade
+EPIC-AUTH-001; REQ-AUTH-002; PG-006; SPEC-AUTH-001; [regras oficiais](../product/official-validation-decisions.md).

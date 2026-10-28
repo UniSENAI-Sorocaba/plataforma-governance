@@ -2,7 +2,7 @@
 title: Knowledge Base da Plataforma Digital
 status: Approved
 owner: Product Governance
-last_updated: 2026-09-10
+last_updated: 2026-10-28
 baseline: governance-v0.1.0-candidate
 ---
 
@@ -13,7 +13,7 @@ Esta é a fonte normativa da Plataforma Digital. Estado de tarefas pertence ao G
 ## Mapa
 
 - `governance/`: autoridade, equipes, responsabilidades e processo.
-- `product/`: visão, escopo, personas, módulos e épicos.
+- `product/`: visão, escopo, personas, módulos, épicos e decisões oficiais do produto.
 - `requirements/` e `specs/`: necessidades e comportamento verificável.
 - `must-haves/`: invariantes obrigatórios.
 - `architecture/` e `contracts/`: decisões e interfaces versionadas.
@@ -25,7 +25,9 @@ Esta é a fonte normativa da Plataforma Digital. Estado de tarefas pertence ao G
 
 ## Hierarquia de autoridade
 
-Em conflito: baseline aprovada mais recente → SPEC/Requirement → Must Have → ADR/Contract → guias → arquivo histórico. Nenhum documento `Draft` é normativo.
+Para regras de negócio cobertas pelo Caderno de Validações de Escopo — AUTH, PI e Extensão, prevalecem as respostas oficiais do caderno sobre regras funcionais anteriores conflitantes. A transcrição versionada está em [Regras oficiais do caderno de validações](product/official-validation-decisions.md). ADRs, contratos, SPECs, Must Haves e guias incompatíveis devem ser reconciliados por PR, preservando rastreabilidade e deixando explícitos os detalhes que o caderno não definiu.
+
+Para temas não respondidos pelo caderno, permanece a baseline aprovada mais recente → SPEC/Requirement → Must Have → ADR/Contract → guias → arquivo histórico. Nenhum documento `Draft` é normativo. Uma resposta oficial do caderno não torna automaticamente uma SPEC completa: faltas de critérios, estados, dados e detalhes técnicos permanecem registradas como lacunas.
 
 ## Mudanças
 
