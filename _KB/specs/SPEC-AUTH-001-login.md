@@ -35,5 +35,14 @@ Formato, colunas, validação, duplicatas, erros parciais e reimportação do CS
 ## Trabalho das equipes
 Backend/DB implementam identidade local, provisionamento e estado de conta; Frontend implementa login, primeiro acesso e troca de senha; QA cobre sucesso, falhas, importação e autorização.
 
+## Cenários de aceite verificáveis
+- **AC-AUTH-001-01a — Login local:** CPF provisionado com senha válida autentica a mesma conta; nenhuma chamada a provedor externo é necessária.
+- **AC-AUTH-001-02a — Conta desconhecida/inativa:** CPF sem cadastro e conta inativa não recebem sessão autenticada; resposta não confirma credencial nem revela dados da conta.
+- **AC-AUTH-001-03a — Sem autocadastro:** pessoa não provisionada não consegue criar uma conta por rota pública; somente o fluxo de importação autorizado pode criar cadastro.
+- **AC-AUTH-001-03b — CSV restrito:** tentativa de importar sem permissão de coordenação é negada antes de persistir qualquer registro.
+- **AC-AUTH-001-04a — Primeiro acesso/reset:** senha temporária ou redefinida por docente/coordenação não permite prosseguir para funcionalidades protegidas sem criar nova senha; após troca bem-sucedida, a nova senha autentica.
+- **AC-AUTH-001-05a — Segredos:** senha, conteúdo de CSV com credenciais e tokens não aparecem no corpo de erro nem em logs.
+- O caderno não define validação, duplicatas ou atomicidade do CSV; critérios sobre importação parcial e reimportação aguardam decisão.
+
 ## Rastreabilidade
 EPIC-AUTH-001; REQ-AUTH-001; PG-005/PG-006; [regras oficiais](../product/official-validation-decisions.md). Revisar CONTRACT-AUTH-001 e ADRs incompatíveis antes da implementação.
