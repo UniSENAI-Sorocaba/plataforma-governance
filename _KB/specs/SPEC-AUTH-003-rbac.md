@@ -11,26 +11,25 @@ legacy_aliases: [US03]
 # Autorização RBAC
 
 ## Objetivo
-Aplicar autorização por papéis e permissões no servidor a cada operação protegida. Esta especificação permanece Draft; os critérios abaixo são propostas para revisão em PG-006.
+Aplicar no servidor as permissões oficiais de coordenação, docentes e alunos, respeitando o cadastro único por CPF.
 
-## Escopo
-Os perfis institucionais identificados em ADR-003 incluem Aluno, Docente, Coordenação, CPA e Administrador. A existência dos perfis não define, por si só, quais ações cada perfil pode executar.
+## Regras oficiais
+- Coordenação cria e gerencia usuários e permissões, importa cadastros e pode inativar turma ou aluno.
+- Docentes criam projetos, aprovam ou removem alunos dos projetos e validam horas dos alunos vinculados aos projetos sob sua responsabilidade.
+- Alunos registram e editam atividades do projeto enquanto elas não tiverem sido avaliadas ou validadas.
+- Uma pessoa que exerce mais de uma função acumula as permissões dessas funções no mesmo cadastro.
+- Todo projeto exige pelo menos um docente responsável; este aprova/remover participantes e registra justificativa na remoção.
+- O mesmo docente responsável valida horas; outros docentes podem adicionar avaliação de Extensão.
+- Um único fluxo de login apresenta as funcionalidades previstas para o semestre; a interface não substitui autorização da API.
 
-## Critérios de aceite propostos
-- **AC-AUTH-003-01 — Verificação server-side:** Dada uma operação protegida, quando a API a processar, então ela valida no servidor a identidade, o papel e a permissão aplicável, conforme MH-SEC-002.
-- **AC-AUTH-003-02 — Negação por padrão:** Dada uma operação sem regra explícita de permissão, quando um usuário a solicitar, então o servidor nega o acesso.
-- **AC-AUTH-003-03 — Acesso permitido:** Dado um usuário autenticado com a permissão aprovada para a ação e o recurso, quando solicitar essa ação, então o servidor permite apenas o escopo definido na matriz aprovada.
-- **AC-AUTH-003-04 — Acesso negado:** Dado um usuário sem a permissão exigida, quando solicitar a ação, então o servidor nega a operação e não altera o recurso.
-- **AC-AUTH-003-05 — Interface:** Quando a interface ocultar ou desabilitar ações sem permissão, então a API continua aplicando a mesma autorização independentemente da interface.
+## Critérios de aceite que a especificação deve completar
+Autorizar as ações acima no servidor; negar por padrão ações não definidas; restringir docentes ao projeto sob sua responsabilidade quando assim definido; registrar justificativa para remoção; permitir acumulação de funções sem duplicar cadastro.
 
-## Alinhamento pendente (propostas do caderno não aprovadas)
-- Aprovar matriz versionada de papéis × ações × recursos e escopo por turma/projeto/unidade.
-- Decidir se múltiplos papéis acumulam permissões, quais papéis podem coexistir e quem pode atribuir/remover cada papel.
-- Definir usuário sem papel, permissão desconhecida, mudança de papel em sessão ativa e indisponibilidade da fonte de permissões.
-- O conjunto de perfis em ADR-003 não equivale a uma matriz de autorização completa. PO/coordenação aprova regras; Segurança revisa menor privilégio.
+## Detalhes ainda não definidos
+Matriz completa de ações e escopos por papel, quem atribui/remove cada função, comportamento quando há múltiplos docentes responsáveis, e papéis técnicos distintos que não aparecem no caderno. Registrar esses detalhes sem contradizer as permissões oficiais.
 
-## Trabalho dependente da decisão
-Backend aplica autorização server-side e negação por padrão; DB guarda papéis/escopos se aprovados; Frontend reflete ações disponíveis sem substituir a API; QA testa matriz positiva e negativa, escopo cruzado e mudanças de papel.
+## Trabalho das equipes
+Backend implementa autorização; DB persiste funções e vínculos; Frontend reflete permissões; QA cobre matriz allow/deny, escopo de projeto e combinação de papéis.
 
-## Dependências e rastreabilidade
-REQ-AUTH-003; MH-SEC-002; ADR-003; SPEC-AUTH-001; SPEC-AUTH-004; PG-006. A matriz é bloqueadora para implementação funcional completa e aprovação do SPEC.
+## Rastreabilidade
+EPIC-AUTH-001; REQ-AUTH-003; PG-006; SPEC-AUTH-001; [regras oficiais](../product/official-validation-decisions.md).
