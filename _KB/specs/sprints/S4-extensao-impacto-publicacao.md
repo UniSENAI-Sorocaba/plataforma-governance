@@ -6,7 +6,7 @@ approval: []
 sprint: S4
 epics: [EPIC-EXT-001, EPIC-PORTAL-001]
 canonical_specs: [SPEC-EXT-001, SPEC-EXT-002, SPEC-PORTAL-001, SPEC-PORTAL-002]
-source_of_truth: ../product/official-validation-decisions.md
+source_of_truth: ../../product/official-validation-decisions.md
 ---
 
 # Sprint 4 — Extensão, horas e impacto publicado
