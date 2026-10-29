@@ -7,7 +7,7 @@ approval: []
 sprint: S6
 epics: []
 canonical_specs: []
-source_of_truth: ../product/official-validation-decisions.md
+source_of_truth: ../../product/official-validation-decisions.md
 ---
 
 # Sprint 6 — Homologação, escopo de release e go/no-go
