@@ -6,7 +6,7 @@ approval: []
 sprint: S3
 epics: [EPIC-PI-001, EPIC-EXT-001, EPIC-PORTAL-001]
 canonical_specs: [SPEC-PI-002, SPEC-PI-003, SPEC-EXT-003, SPEC-PORTAL-001]
-source_of_truth: ../product/official-validation-decisions.md
+source_of_truth: ../../product/official-validation-decisions.md
 ---
 
 # Sprint 3 — Avaliações, certificados e catálogo público
@@ -55,7 +55,7 @@ O estudante, docente e visitante veem e executam somente os fluxos de avaliaçã
 
 ## Contratos e dependências de equipe
 
-- Backend: BE-015 (notas), BE-017 (certificado), BE-018 (catálogo). BE-016 (auditoria de negocio) não integra o escopo conforme o Caderno; manter bloqueado até reconciliar a issue.
+- Backend: BE-015 (notas), BE-017 (certificado), BE-018 (catálogo). BE-016 (auditoria de negócio) fica fora do escopo conforme o Caderno; não criar endpoint/trilha de auditoria sem reconciliar formalmente a issue. BE-016 (auditoria de negocio) não integra o escopo conforme o Caderno; manter bloqueado até reconciliar a issue.
 - Database: DB-009/010/014, sem inferir dados além das decisões aprovadas.
 - Frontend: FE-013/014/015.
 - Qualidade: QA-016/017/018.
