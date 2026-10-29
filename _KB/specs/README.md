@@ -24,3 +24,17 @@ owner: Product Owner
 As respostas cobertas pelo [Caderno de Validações](../product/official-validation-decisions.md) são regras oficiais de produto, não propostas. As Specs permanecem em Draft quando ainda faltam critérios verificáveis, estados completos, limites, exceções, revisão técnica ou reconciliação de contratos. Draft não rebaixa a autoridade das respostas registradas.
 
 A [KB de reconciliação](../product/functional-rules-reconciliation.md) liga cada decisão a questões ainda abertas e às entregas das equipes. Cada SPEC deve referenciar as regras oficiais aplicáveis e separar claramente regra decidida de detalhe não respondido.
+
+
+## Pacotes de especificação por sprint — Draft para validação do PO
+
+Os pacotes abaixo organizam comportamento, critérios e decisões por sprint para revisão de Produto. São documentos transversais de planejamento/aceite: **não substituem** as SPECs canônicas por domínio, não criam regra para lacuna não respondida e não são normativos enquanto estiverem em Draft.
+
+| Sprint | Pacote de revisão | SPECs de domínio relacionadas | Estado |
+| --- | --- | --- | --- |
+| S3 | [Avaliações, certificados e catálogo](sprints/S3-avaliacoes-certificados-catalogo.md) | PI-002/003, EXT-003, PORTAL-001 | Draft |
+| S4 | [Extensão, horas e impacto publicado](sprints/S4-extensao-impacto-publicacao.md) | EXT-001/002, PORTAL-001/002 | Draft |
+| S5 | [Confiabilidade, segurança e desempenho](sprints/S5-confiabilidade-seguranca-desempenho.md) | Critérios transversais às SPECs no release | Draft |
+| S6 | [Homologação, escopo e go/no-go](sprints/S6-release-homologacao-go-no-go.md) | Critérios de release para SPECs aprovadas | Draft |
+
+Os pacotes S5/S6 são de qualidade operacional e aceite do release, não novos EPICs funcionais. Campos, escalas, prazos, métricas e outras decisões ainda abertas devem ser aprovadas pelo PO antes de entrarem em contratos ou implementação.
