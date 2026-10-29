@@ -7,7 +7,7 @@ approval: []
 sprint: S5
 epics: []
 canonical_specs: [SPEC-AUTH-001, SPEC-AUTH-002, SPEC-AUTH-003, SPEC-PI-001, SPEC-PI-002, SPEC-PI-003, SPEC-PI-004, SPEC-EXT-001, SPEC-EXT-002, SPEC-PORTAL-001, SPEC-PORTAL-002]
-source_of_truth: ../product/official-validation-decisions.md
+source_of_truth: ../../product/official-validation-decisions.md
 ---
 
 # Sprint 5 — Confiabilidade, segurança e desempenho
