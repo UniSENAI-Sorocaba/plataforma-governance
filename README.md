@@ -7,7 +7,7 @@ Plataforma integrada para Projetos Integradores, Extensão Universitária, ident
 - Lead Product Owner / PO Coach: Luciano Menezes Júnior.
 - Product Owner: Fellipe Raszejas.
 - Squads funcionais: Backend, Frontend, Banco de Dados, Cloud & DevOps e Qualidade/Testes/Segurança.
-- Composição oficial: [`new_teams.md`](new_teams.md).
+- Composição normativa vigente: [`_KB/governance/squads.md`](_KB/governance/squads.md). A composição organizacional de origem está preservada em [`new_teams.md`](new_teams.md).
 
 ## Arquitetura vigente
 

@@ -4,7 +4,9 @@
 >
 > Vigência: **2026-09-10**
 >
-> Este arquivo é a fonte de verdade para a composição atual das equipes.
+> Este arquivo é a fonte organizacional de origem para a composição das equipes.
+>
+> A fonte normativa vigente é `_KB/governance/squads.md`; este documento preserva a composição informada na transição e não deve divergir da KB ativa.
 
 ## Governança de Produto
 

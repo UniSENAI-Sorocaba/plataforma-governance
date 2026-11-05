@@ -12,7 +12,7 @@ Decisões:
 
 - Luciano Menezes Júnior (`@lucianomenezesjr`) é **Lead Product Owner (LPO) / PO Coach**.
 - Fellipe Raszejas (`@FellipeRaszejas`) é **Product Owner (PO)**.
-- `new_teams.md` é a fonte de verdade da composição das equipes.
+- `_KB/governance/squads.md` é a fonte normativa da composição das equipes; `new_teams.md` é a fonte organizacional de origem preservada para rastreabilidade.
 - O trabalho é controlado por Issues e por um único GitHub Project organizacional.
 - O desenvolvimento usa fluxo de integração em `develop`: todo PR de desenvolvimento deve ser direcionado a `develop`; `main` é protegida e recebe apenas promoções aprovadas de `develop`, com releases por tag.
 - Regras normativas ficam em um repositório de governança e são consumidas por tag e commit imutáveis.
@@ -242,7 +242,7 @@ O workflow deve verificar que a tag resolve para o SHA declarado antes de execut
 
 ## 11. Ordem de implantação
 
-1. Confirmar os usernames ainda ausentes em `new_teams.md`.
+1. Confirmar os usernames ainda ausentes na fonte organizacional de origem e refletir a composição aprovada em `_KB/governance/squads.md`.
 2. Criar Teams e incluir membros conforme a fonte definitiva.
 3. Criar/renomear repositórios e atribuir permissões por Team.
 4. Criar Project, campos, views, milestones e labels.
