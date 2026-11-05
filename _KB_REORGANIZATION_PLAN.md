@@ -18,6 +18,10 @@ Recomenda-se manter um repositório dedicado de governança, com publicação ve
 
 A migração deve preservar o conteúdo atual, declarar conflitos, introduzir tipos documentais e IDs estáveis, separar fontes normativas de fontes operacionais e só então arquivar documentos superados. Este plano propõe uma taxonomia rasa, cinco níveis de governança e um harness de conformidade que usa uma referência remota aprovada e verificações determinísticas antes de análise por agente.
 
+### Resolução pós-implementação
+
+O plano foi executado conforme `_KB_MIGRATION_REPORT.md`. A composição normativa vigente foi promovida para `_KB/governance/squads.md`; `new_teams.md` permanece como fonte organizacional de origem e rastreabilidade; a estrutura anterior permanece somente em `_KB/archive/`. Em caso de divergência futura, a KB ativa e seu `squad-map.json` prevalecem, e a mudança deve ocorrer por PR de governança.
+
 ## 2. Current State
 
 ### Inventário
