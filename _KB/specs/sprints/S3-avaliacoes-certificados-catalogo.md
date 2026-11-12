@@ -37,7 +37,7 @@ O estudante, docente e visitante veem e executam somente os fluxos de avaliaçã
 5. Qualquer docente pode adicionar avaliação de Extensão.
 6. A nota do projeto pode ser pública; notas e avaliações individuais e horas individuais não são públicas.
 7. Não se mantém o valor anterior de notas. Atualização substitui o valor vigente; o caderno não autoriza trilha de auditoria de negócio.
-8. Projeto publicado aparece no catálogo; rascunho fica disponível apenas a alunos autenticados.
+8. O campo único `status` guarda `APPROVED` (publicado) ou `PROPOSED` (rascunho); não existe flag separada. Docente pode mudar explicitamente entre esses valores. `APPROVED` pode aparecer no catálogo; `PROPOSED` fica disponível apenas a alunos autenticados.
 9. Arquivo interno não se torna público automaticamente. Foto só pode ser publicada conforme decisão do docente responsável, com atenção a menores e terceiros.
 
 ## Critérios de aceite propostos
@@ -49,7 +49,7 @@ O estudante, docente e visitante veem e executam somente os fluxos de avaliaçã
 - AC-S3-05 — Extensão: um docente pode adicionar avaliação de Extensão sem ser tratado como avaliador de banca.
 - AC-S3-06 — Privacidade: visitante anônimo nunca recebe nota ou hora individual. Nota do projeto só é exibida no nível agregado e após publicação autorizada. Avaliação individual de docente fica restrita aos alunos do próprio projeto conforme o caderno.
 - AC-S3-07 — Sem histórico: correção atualiza o valor vigente e não preserva valor anterior nem cria trilha de auditoria de negócio.
-- AC-S3-08 — Catálogo: projeto não publicado não aparece para visitante; aluno autenticado pode consultar rascunho; projeto publicado só expõe campos e conteúdo aprovados como públicos.
+- AC-S3-08 — Catálogo: `status = PROPOSED` não aparece para visitante e pode ser consultado por aluno autenticado; `status = APPROVED` pode aparecer no catálogo. A publicação usa o campo `status`, sem flag separada, e só expõe campos/conteúdo aprovados como públicos.
 - AC-S3-09 — Imagens: arquivo/foto sem autorização do docente responsável não aparece publicamente.
 - AC-S3-10 — Certificado: a entrega permanece bloqueada para implementação funcional até que critérios de emissão e validação sejam aprovados e registrados na SPEC-EXT-003.
 
