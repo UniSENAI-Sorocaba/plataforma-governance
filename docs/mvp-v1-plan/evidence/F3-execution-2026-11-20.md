@@ -2,7 +2,7 @@
 
 **Data:** 2026-11-20  
 **Escopo:** DB-008/DB-011, BE-007/BE-011 e FE-009 — projetos, participação e entregáveis
-**Branches de trabalho:** `f3-db-011-deliverables`, `f3-be-011-deliverables`, `f3-fe-009-deliverables`, `f3-inf-010-storage`
+**Branches de trabalho:** `f3-db-011-deliverables`, `f3-be-011-deliverables`, `f3-fe-009-deliverables`, `f3-inf-010-storage`, `f6-qa-browser-e2e`, `f6-inf-008-secrets`
 
 ## Entregas realizadas
 
@@ -44,6 +44,7 @@ Também foi aplicada a V0011 no banco local e validado o vínculo obrigatório d
 
 - `npm run check` em `plataforma-frontend`: lint, typecheck, 21 testes e build aprovados.
 - `make validate` em `plataforma-infrastructure`: formatação e validação Terraform aprovadas para roots e módulos.
+- `make up && make init && make plan` em `plataforma-infrastructure`: plano local do root de development aprovado com 11 recursos para criação, incluindo KMS, Secrets Manager e storage.
 
 ### E2E com banco real
 
@@ -59,6 +60,16 @@ Fluxo executado contra backend local configurado com JWT e PostgreSQL real:
 
 Resultado: fluxo aprovado sem alteração manual no banco.
 
+### E2E de navegador
+
+Comando executado em `plataforma-quality`:
+
+```text
+npm run test:e2e:t13
+```
+
+Resultado: **passed** contra backend, PostgreSQL e frontend reais, cobrindo login, visualização da solicitação aprovada, seleção do arquivo, upload e confirmação visual `Arquivo enviado com segurança.`.
+
 ### Consistência estática
 
 - `git diff --check` sem ocorrências no backend e no banco.
@@ -67,7 +78,7 @@ Resultado: fluxo aprovado sem alteração manual no banco.
 ## Limitações conhecidas
 
 - A configuração de e-mail permanece fora do escopo desta entrega, conforme decisão registrada.
-- A ativação dos roots Terraform depende da implementação existente do módulo de secrets/KMS; o módulo de storage foi validado isoladamente e não foi aplicado contra AWS.
+- O apply contra AWS não foi executado; a configuração foi validada e o root de development foi planejado no MiniStack. O material secreto não é versionado.
 
 ## Integração
 
@@ -75,3 +86,5 @@ Resultado: fluxo aprovado sem alteração manual no banco.
 - Database: PR [#46](https://github.com/UniSENAI-Sorocaba/plataforma-database/pull/46), merge `891200f`.
 - Frontend: PR [#64](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/64), merge `6a1d3f9`.
 - Infrastructure: PR [#35](https://github.com/UniSENAI-Sorocaba/plataforma-infrastructure/pull/35), merge `7aefc2c`.
+- Quality: PR [#62](https://github.com/UniSENAI-Sorocaba/plataforma-quality/pull/62), merge `c71ba084`.
+- Infrastructure: PR [#36](https://github.com/UniSENAI-Sorocaba/plataforma-infrastructure/pull/36), merge `3ca05c5`.
