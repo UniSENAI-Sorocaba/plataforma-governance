@@ -1,8 +1,8 @@
 # Evidências de execução — F3
 
 **Data:** 2026-11-20  
-**Escopo:** DB-008 e BE-007 — projetos, períodos e participação  
-**Branches de trabalho:** `f3-db-008-projects-participation`, `f3-be-007-proposals`
+**Escopo:** DB-008/DB-011, BE-007/BE-011 e FE-009 — projetos, participação e entregáveis
+**Branches de trabalho:** `f3-db-011-deliverables`, `f3-be-011-deliverables`, `f3-fe-009-deliverables`, `f3-inf-010-storage`
 
 ## Entregas realizadas
 
@@ -11,6 +11,10 @@
 - API JDBC/Spring para criar e consultar projetos, publicar/despublicar, arquivar/reabrir, criar período, solicitar participação, decidir, desistir e remover participante.
 - Política de autorização por rota e escopo para docente, coordenação, aluno e responsável pelo projeto.
 - Contrato OpenAPI atualizado para os endpoints entregues.
+- Migration V0011 para metadados de entregáveis, hashes de tokens, lifecycle e vínculo ao participante.
+- API de upload/download temporário com validação de extensão/MIME/tamanho, SHA-256 e storage local configurável.
+- Interface de upload para aluno aprovado, com cancelamento e estados acessíveis.
+- Módulo Terraform de bucket privado, versionado, cifrado com KMS, com lifecycle e política TLS.
 
 ## Validações executadas
 
@@ -19,10 +23,10 @@
 Comando executado em `plataforma-backend`:
 
 ```text
-mvn --batch-mode test
+mvn --batch-mode verify -q
 ```
 
-Resultado: **BUILD SUCCESS**, 66 testes executados, 0 falhas, 0 erros e 0 ignorados.
+Resultado: **BUILD SUCCESS**, incluindo a cobertura unitária da regra de negócio de upload.
 
 ### Banco de dados
 
@@ -34,7 +38,26 @@ make validate
 
 Resultado: validações de schemas, migrações, integridade, RBAC, seeds, constraints e modelo de projetos concluídas com sucesso.
 
-Também foi validada a regra de limite de participação por termo acadêmico após a correção da função da migration V0008, registrada em V0009.
+Também foi aplicada a V0011 no banco local e validado o vínculo obrigatório do entregável a participante/período.
+
+### Frontend e infraestrutura
+
+- `npm run check` em `plataforma-frontend`: lint, typecheck, 21 testes e build aprovados.
+- `make validate` em `plataforma-infrastructure`: formatação e validação Terraform aprovadas para roots e módulos.
+
+### E2E com banco real
+
+Fluxo executado contra backend local configurado com JWT e PostgreSQL real:
+
+1. autenticação de aluno e coordenador;
+2. criação de período vigente;
+3. aprovação da solicitação de participação;
+4. emissão da URL temporária de upload para o participante;
+5. envio de arquivo PDF;
+6. confirmação de status `AVAILABLE`, hash SHA-256 e URL temporária de download;
+7. download do mesmo conteúdo e comparação do payload.
+
+Resultado: fluxo aprovado sem alteração manual no banco.
 
 ### Consistência estática
 
@@ -43,6 +66,12 @@ Também foi validada a regra de limite de participação por termo acadêmico ap
 
 ## Limitações conhecidas
 
-- Ainda não foi executado E2E de navegador contra backend e banco reais nesta evidência.
 - A configuração de e-mail permanece fora do escopo desta entrega, conforme decisão registrada.
-- A integração de telas do frontend com os endpoints da F3 ainda é uma etapa posterior.
+- A ativação dos roots Terraform depende da implementação existente do módulo de secrets/KMS; o módulo de storage foi validado isoladamente e não foi aplicado contra AWS.
+
+## Integração
+
+- Backend: PR [#61](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/61), merge `9eda99d`, e follow-up [#62](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/62), merge `1b1172f`.
+- Database: PR [#46](https://github.com/UniSENAI-Sorocaba/plataforma-database/pull/46), merge `891200f`.
+- Frontend: PR [#64](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/64), merge `6a1d3f9`.
+- Infrastructure: PR [#35](https://github.com/UniSENAI-Sorocaba/plataforma-infrastructure/pull/35), merge `7aefc2c`.
