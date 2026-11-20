@@ -34,6 +34,18 @@ Total reproduzível em 100% dos fixtures de horas.
 
 Aluno e docente visualizam estado e total correto.
 
+## Decisões de implementação do MVP
+
+- Horas em incrementos de 0,25, entre 0,25 e 100 por atividade; sem limite acumulado não definido.
+- Estados formais: `SUBMITTED`, `APPROVED`, `REJECTED`; recusa exige motivo e aprovação exige horas aprovadas.
+- Reenvio de atividade recusada é permitido antes do encerramento do período e substitui o registro atual, sem histórico.
+- Duplicidade é a mesma combinação de projeto, período, aluno e título normalizado.
+- O prazo é o `ends_at` do período, com fronteira final exclusiva; o ajuste excepcional permanece bloqueado até resolução de Q61/Q62.
+
+## Evidência
+
+Consultar [F4-T15-execution-2026-11-20.md](../evidence/F4-T15-execution-2026-11-20.md).
+
 - código integrado na branch de integração;
 - testes e validações executados;
 - PR, commit e evidências vinculados à Issue;

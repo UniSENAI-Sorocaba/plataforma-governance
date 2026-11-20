@@ -39,4 +39,4 @@ Janela, elegibilidade, duplicidade, desistência e limite de fronteira foram cob
 ## Limitações
 
 - O E2E browser específico de T14 ainda depende de dados sintéticos de edital publicado; o E2E de T13 foi executado anteriormente contra os serviços reais.
-- T15 — atividades e horas — ainda não foi implementada.
+- T15 — atividades e horas — implementada e evidenciada em [F4-T15-execution-2026-11-20.md](./F4-T15-execution-2026-11-20.md).

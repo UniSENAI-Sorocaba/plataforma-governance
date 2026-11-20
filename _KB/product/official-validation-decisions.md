@@ -122,6 +122,17 @@ Detalhes ainda não especificados: escala, precisão e arredondamento, ausência
 
 Detalhes ainda não especificados: relação entre edital, aviso, atividade e projeto; elegibilidade, vagas, inscrições duplicadas, cancelamento, unidade/limites de horas, motivo de recusa e regra de submissão no instante final.
 
+### Decisões de fechamento do MVP — T15 atividades e horas — 2026-11-20
+
+- **Unidade e limites:** horas são informadas em incrementos de 0,25 hora; cada atividade aceita de 0,25 a 100 horas solicitadas ou aprovadas. O MVP não impõe um teto acumulado por projeto porque esse limite não foi definido pelo Produto.
+- **Entidade:** atividade pertence a um projeto, período e participante ativo. Título identifica a atividade do aluno dentro do período; a mesma combinação não pode ser persistida duas vezes.
+- **Estados:** `SUBMITTED`, `APPROVED` e `REJECTED`. A atividade começa submetida; aprovação exige horas aprovadas; recusa exige motivo não vazio.
+- **Reenvio:** uma atividade recusada pode ser corrigida e reenviada antes do encerramento do período, reutilizando o mesmo registro e substituindo o estado vigente. Não há histórico de negócio.
+- **Recusa:** somente o docente responsável pelo projeto pode aprovar ou rejeitar; coordenação, aluno e outro docente não executam essa decisão.
+- **Prazo:** usa `enrollment_period.ends_at`, comparado como `now < ends_at`; a API persiste instantes UTC e a interface converte para `America/Sao_Paulo`. O MVP não cria ajuste excepcional de prazo enquanto o conflito Q61/Q62 não for resolvido.
+- **Totalização:** total do aluno é a soma de `approved_hours` das atividades `APPROVED` do projeto/período; atividades submetidas ou recusadas não entram no total.
+- **Evidência:** o MVP registra título e descrição textual; upload de evidência, notificações e histórico ficam fora de T15.
+
 ### Decisões de fechamento do MVP — T14 editais e inscrições — 2026-11-20
 
 - **Edital:** é uma entidade própria, distinta de aviso, com título, descrição,
