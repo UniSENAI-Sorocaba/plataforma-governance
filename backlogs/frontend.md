@@ -8,9 +8,9 @@
 | FE-004 | P0/S1 | 8 | Kaique Silva Primissia | Paola | Login trata erros/loading e redireciona por perfil | BE-004 |
 | FE-005 | P0/S1 | 5 | Nicolas Ricardo Kourani Leão Silva | Paola | Sessão renova uma vez e encerra com segurança em falha | BE-006 |
 | FE-006 | P0/S1 | 8 | Matheus Henrique Koop Boff | Paola | Proposta valida campos e preserva rascunho permitido | BE-007 |
-| FE-007 | P0/S1 | 5 | Giovani Bernardo | Paola | Convites mostram status e impedem ação duplicada | BE-008 |
+| FE-007 | P0/S1 | 5 | Giovani Bernardo | Paola | Solicitações de participação mostram status e impedem ação duplicada; não há convite | BE-008 |
 | FE-008 | P0/S1 | 8 | Swell Gomes | Paola | Editais mostram janela/status e inscrição confirma resultado | BE-009 |
-| FE-009 | P0/S2 | 8 | Kaique Silva | Paola | Gestão de equipe cobre convite, aceite, recusa e remoção | BE-008 |
+| FE-009 | P0/S2 | 8 | Kaique Silva | Paola | Gestão de equipe cobre solicitação, aprovação, negação e remoção justificada | BE-008 |
 | FE-010 | P0/S2 | 8 | Nicolas Ricardo | Paola | Agenda trata timezone, conflito e feedback de erro | BE-011 |
 | FE-011 | P0/S2 | 8 | Matheus Henrique | Paola | Upload mostra progresso, limites, cancelamento e confirmação | BE-012–013 |
 | FE-012 | P0/S2 | 8 | Giovani Bernardo | Paola | Painel docente registra decisão/motivo e atualiza horas | BE-014 |

@@ -1,7 +1,7 @@
 # Evidência de execução — Fase 2
 
 **Data:** 2026-11-20  
-**Status:** implementação da Fase 2 integrada; critérios de sessão, primeiro acesso, recuperação e redefinição estão cobertos por testes. E2E browser contra ambiente compartilhado e entrega SMTP permanecem como validações operacionais dependentes do ambiente.
+**Status:** sessão HTTP de refresh/logout e integração client-side foram integradas; recuperação/primeiro acesso e E2E contra backend + banco reais ainda impedem o fechamento formal da Fase 2.
 
 ## Escopo concluído
 
@@ -19,8 +19,6 @@
 | FE-004/T07 — Jornada de login | Concluído | `f2-frontend-auth`, PR [#57](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/57) | Merge `44e9963`; `npm run check` verde; sem fallback de sessão demo |
 | BE-006/T08 — HTTP refresh/logout | Concluído | `f2-session-http`, PR [#55](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/55) | Merge `58bd99a`; `mvn test` com 61 testes; rotação, reuse, expiração e revogação cobertos |
 | FE-005/T08 — Renovação/logout no cliente | Concluído | `f2-frontend-auth`, PR [#58](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/58) | Merge `b02f32b`; `npm run check` verde; refresh atualiza tokens e 401 limpa sessão |
-| BE-006/T08 — Conta e recuperação HTTP | Concluído | `f2-account-recovery`, PR [#56](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/56) | Merge `2363944`; adapters JDBC para `auth.user` e `auth.password_recovery_token`, primeiro acesso, request/reset one-use |
-| FE-005/T08 — Primeiro acesso e redefinição | Concluído | `f2-first-access`/`f2-password-reset`, PRs [#59](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/59) e [#60](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/60) | Merges `44200e5` e `0a04a20`; `npm run check` verde; formulários conectados aos contratos reais |
 
 ## Implementação backend
 
@@ -72,12 +70,6 @@ PR #55 foi integrada por squash com o commit `58bd99a931c1c9c51484db239e85af7a29
 
 PR #58 foi integrada por squash com o commit `b02f32bd863530d9fca258c0345dae24c91dfc54`; `npm run check` passou com lint, typecheck, testes e build.
 
-PR #56 foi integrada por squash com o commit `236394463147b0d1b40de61a01aebab53873491f`; `mvn test` passou com os testes de primeiro acesso, recuperação one-use, autorização de rotas e adapters.
-
-PR #59 foi integrada por squash com o commit `44200e5c530d61b3cbeae40726dc210feb53dde2`; `npm run check` passou com primeiro acesso e solicitação de recuperação.
-
-PR #60 foi integrada por squash com o commit `0a04a2074d399382907180c09c08b295e88fdef6`; o check remoto `lint / typecheck / test / build` passou.
-
 ### Database DB-005/DB-006
 
 `make up && make migrate && make test && make down`: PASS. A instalação incremental, o upgrade desde V0001, a idempotência de migrations/seeds e o fluxo sintético de rotação, revogação e uso único foram aprovados.
@@ -93,4 +85,4 @@ O mesmo ciclo foi repetido após DB-006 com `make seed`; os objetos RBAC, constr
 
 ## Próxima etapa
 
-Executar E2E browser contra backend + banco reais e configurar um adapter SMTP aprovado para a entrega do token. O código não possui credenciais/provedor de e-mail no repositório; portanto, essa é uma validação operacional externa, não uma lacuna de contrato ou de segurança da implementação. Após essa execução, registrar os artefatos e encerrar formalmente a Fase 2.
+Implementar o contrato HTTP de recuperação e primeiro acesso com adaptadores reais de conta e entrega, além de executar E2E contra backend + banco reais. A Fase 2 só deve ser marcada como concluída após esses critérios; o núcleo atual não inventa delivery de recuperação nem considera uma validação local como fluxo funcional.

@@ -8,16 +8,16 @@
 | BE-004 | P0/S1 | 8 | João Victor | Victor | Login institucional emite JWT RS256 e rejeita credencial inválida | DB-004, INF-008 |
 | BE-005 | P0/S1 | 5 | Ana Paula Maximo | João | Argon2id configurado; senha/token não aparecem em log | BE-004 |
 | BE-006 | P0/S1 | 8 | Carlos Eduardo Pereira | João | Refresh rotativo/logout revogam sessão e detectam reuse | DB-005 |
-| BE-007 | P0/S1 | 8 | Johann Arruda Andrade | Victor | CRUD de propostas valida papéis, campos e transições | DB-008 |
-| BE-008 | P0/S1 | 5 | Lucas Miguel Leite | Johann | Convites aceitam/recusam sem duplicidade | BE-007 |
+| BE-007 | P0/S1 | 8 | Johann Arruda Andrade | Victor | Cadastro de propostas valida campos, responsáveis, `DRAFT/PUBLISHED` e `ACTIVE/ARCHIVED` sem submissão separada | DB-008 |
+| BE-008 | P0/S1 | 5 | Lucas Miguel Leite | Johann | Solicitações de participação são aprovadas/negadas pelo docente responsável, sem convites e sem duplicidade | BE-007 |
 | BE-009 | P0/S1 | 8 | Marco Antônio da Costa Silva | João | Editais/inscrições respeitam janela e elegibilidade | DB-012 |
 | BE-010 | P0/S2 | 8 | Pedro Henrique | João | RBAC server-side cobre todos os endpoints protegidos | BE-004, DB-006 |
-| BE-011 | P0/S2 | 8 | Julio Cesar Boteccio | Victor | Bancas impedem conflito de horário e vínculo inválido | DB-009 |
+| BE-011 | P0/S2 | 8 | Julio Cesar Boteccio | Victor | Avaliações validam vínculo e autorização sem entidade de banca ou agenda | DB-009 |
 | BE-012 | P0/S2 | 5 | Ana Paula | João | URL S3 é curta, restrita e valida tipo/tamanho | INF-010 |
 | BE-013 | P0/S2 | 8 | Carlos Eduardo | Victor | Entregáveis guardam hash/metadados e respeitam autorização | BE-012, DB-011 |
 | BE-014 | P0/S2 | 8 | Johann Arruda | Victor | Horas suportam submissão, decisão, motivo e total | DB-013 |
-| BE-015 | P0/S3 | 13 | João Victor | Victor e Isabelly | Rubricas/notas calculam resultado determinístico e auditável | BE-011, DB-010 |
-| BE-016 | P1/S3 | 5 | Lucas Miguel | João | Auditoria registra ator, ação, alvo, instante e correlação | DB-007 |
+| BE-015 | P0/S3 | 13 | João Victor | Victor e Isabelly | Rubricas/notas calculam resultado determinístico sem histórico de valores anteriores | BE-011, DB-010 |
+| BE-016 | P1/S3 | 5 | Lucas Miguel | João | Logs técnicos sanitizados apoiam operação sem criar auditoria persistente de negócio | DB-007 |
 | BE-017 | P0/S3 | 8 | Marco Antônio | Victor | Certificado possui hash/QR verificável e emissão autorizada | BE-014 |
 | BE-018 | P0/S3 | 8 | Julio Cesar | João | Catálogo pagina/filtra sem expor dados privados | DB-014 |
 | BE-019 | P1/S4 | 5 | Pedro Henrique | Victor | API de impacto publica apenas conteúdo aprovado | DB-015 |

@@ -9,7 +9,7 @@
 | PG-005 | P0/S0 | 5 | Fellipe | Luciano | EPIC-AUTH-001 e REQ-AUTH-001–004 refinados | PG-004 |
 | PG-006 | P0/S0 | 8 | Fellipe | Victor e João | SPEC-AUTH-001–004 possuem ACs numerados e segurança | PG-005 |
 | PG-007 | P0/S0 | 5 | Fellipe | Luciano | EPIC-PI-001 e REQ-PI-001–004 refinados | PG-004 |
-| PG-008 | P0/S0 | 8 | Fellipe | Victor, João e Isabelly | SPEC-PI-001–004 definem equipes, bancas, notas e upload | PG-007 |
+| PG-008 | P0/S0 | 8 | Fellipe | Victor, João e Isabelly | SPEC-PI-001–004 definem participação, avaliações sem bancas, notas e upload | PG-007 |
 | PG-009 | P0/S0 | 5 | Fellipe | Luciano | EPIC-EXT-001 e REQ-EXT-001–003 refinados | PG-004 |
 | PG-010 | P0/S0 | 8 | Fellipe | Victor e Isabelly | SPEC-EXT-001–003 definem editais, horas e certificado | PG-009 |
 | PG-011 | P0/S0 | 5 | Fellipe | Luciano | EPIC-PORTAL-001 e REQ-PORTAL-001–002 refinados | PG-004 |

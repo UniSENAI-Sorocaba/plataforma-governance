@@ -21,7 +21,7 @@ Detalhamento funcional e de negócio dos módulos da plataforma, categorizados e
   * Emissão de Access Tokens JWT (RS256) e Refresh Tokens criptográficos em cookies seguros.
   * Controle de acesso baseado em papéis (RBAC): `STUDENT`, `PROFESSOR`, `COORDINATOR`, `CPA`, `ADMIN`.
   * Gestão de sessões ativas e logout centralizado (revogação de tokens).
-  * Trilhas de auditoria para operações de login, alteração de permissões e ações sensíveis.
+  * Logs técnicos sanitizados para operação e segurança, sem trilha persistente de auditoria de negócio.
   * Recuperação e redefinição segura de senhas via token com tempo de expiração.
 
 ---
@@ -29,9 +29,9 @@ Detalhamento funcional e de negócio dos módulos da plataforma, categorizados e
 ## 2. Módulo 2: Projetos Integradores & Extensão Universitária
 * **Objetivo:** Gerenciar o ciclo de vida completo de Projetos Integradores interdisciplinares e ações extensionistas (atendendo à Resolução CNE/CES nº 7/2018).
 * **Funcionalidades Obrigatórias:**
-  * **Captação de Projetos:** Submissão e validação de propostas de projetos integradores e de extensão (incluindo modelos híbridos acadêmico-extensionistas).
-  * **Gestão de Equipes/Alunos:** Alocação de estudantes em projetos com acompanhamento de status, convites e liderança de grupo.
-  * **Gestão de Bancas Examinadoras:** Agendamento de bancas, alocação de docentes avaliadores e links/salas de apresentação.
+  * **Captação de Projetos:** Cadastro de propostas de projetos integradores e de extensão (incluindo modelos híbridos acadêmico-extensionistas), como rascunho ou publicado.
+  * **Gestão de Equipes/Alunos:** Solicitação de participação por alunos, decisão docente e remoção justificada conforme os limites de participação.
+  * **Avaliações:** Avaliações e rubricas sem bancas, agendamento, salas ou links de apresentação.
   * **Avaliação Docente:** Módulo para avaliação de desempenho e entregáveis por professores avaliadores com base em rubricas estruturadas.
   * **Cálculo de Notas:** Consolidação e lançamento automatizado de notas e médias ponderadas para Projetos Integradores, com geração de ata final.
   * **Cálculo de Horas de Extensão:** Apuração, validação por orientador e controle automatizado de horas de extensão para cumprimento curricular.

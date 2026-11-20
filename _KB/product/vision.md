@@ -11,7 +11,7 @@ last_updated: "2026-08-27"
 ## 1. Declaração de Visão
 A **Plataforma Digital Integrada de Extensão, Acadêmico & Gestão Institucional** tem como propósito transformar a experiência acadêmica e institucional em uma jornada digital unificada, fluida e transparente.
 
-Historicamente, as universidades enfrentam fragmentação de processos em planilhas desconectadas, atrasos na validação manual de horas curriculares de extensão, burocracia na consolidação de notas de bancas examinadoras e falta de visibilidade dos projetos de impacto social perante a sociedade. Esta plataforma centraliza esses processos em um ecossistema moderno, seguro, escalável e centrado no usuário.
+Historicamente, as universidades enfrentam fragmentação de processos em planilhas desconectadas, atrasos na validação manual de horas curriculares de extensão, burocracia na consolidação de avaliações e falta de visibilidade dos projetos de impacto social perante a sociedade. Esta plataforma centraliza esses processos em um ecossistema moderno, seguro, escalável e centrado no usuário.
 
 ---
 
@@ -24,7 +24,7 @@ Historicamente, as universidades enfrentam fragmentação de processos em planil
 |  ALUNOS            |  Painel único: Submissão de PI, acompanhamento de horas de extensão em tempo real,|
 |                    |  emissão automática de certificados digitais e vitrine pública de portfólio.       |
 +--------------------+------------------------------------------------------------------------------------+
-|  DOCENTES          |  Agilidade no agendamento de bancas, avaliação por rubricas automatizada,         |
+|  DOCENTES          |  Gestão de solicitações e avaliação por rubricas automatizada,                   |
 |                    |  validação simplificada de relatórios de extensão e lançamento direto de notas.    |
 +--------------------+------------------------------------------------------------------------------------+
 |  COORDENAÇÃO       |  Dashboards executivos em tempo real, auditoria de horas curriculares (Res. CNE),  |
@@ -44,7 +44,7 @@ Historicamente, as universidades enfrentam fragmentação de processos em planil
 
 1. **Centralização da Identidade (SSO/IAM):** Prover autenticação unificada e controle de acesso RBAC seguro para todos os módulos.
 2. **Operacionalização Completa do Core Acadêmico:** Permitir que 100% dos Projetos Integradores (PI) e Atividades de Extensão do semestre sejam geridos e avaliados na plataforma.
-3. **Conformidade Legal (Curricularização da Extensão):** Atender rigorosamente à Resolução CNE/CES nº 7/2018 com auditoria precisa de horas.
+3. **Conformidade Legal (Curricularização da Extensão):** Atender rigorosamente à Resolução CNE/CES nº 7/2018 com cálculo e validação precisa de horas.
 4. **Visibilidade e Impacto Social:** Expor os resultados acadêmicos em um Portal Público acessível e performático.
 
 ---
