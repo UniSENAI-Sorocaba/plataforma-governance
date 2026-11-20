@@ -1,7 +1,7 @@
 # Evidência de execução — Fase 2
 
 **Data:** 2026-11-20  
-**Status:** DB-005, T07 backend/frontend, T09/RBAC e adapter JDBC integrados; endpoints HTTP de sessão/recuperação ainda pendentes para fechar a Fase 2.
+**Status:** sessão HTTP de refresh/logout e integração client-side foram integradas; recuperação/primeiro acesso e E2E contra backend + banco reais ainda impedem o fechamento formal da Fase 2.
 
 ## Escopo concluído
 
@@ -17,6 +17,8 @@
 | DB-006 — Papéis, permissões e escopos RBAC | Concluído | `f2-db006`, PR [#43](https://github.com/UniSENAI-Sorocaba/plataforma-database/pull/43) | Merge `9036eb6`; instalação, upgrade, idempotência, anti-PII e validações DB-005/DB-006/DB-007 verdes |
 | BE-010/T09 — Autorização HTTP por rota | Concluído | `f2-rbac`, PR [#54](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/54) | Merge `3435c386`; 60 testes, Maven verify, cobertura e autorização verdes |
 | FE-004/T07 — Jornada de login | Concluído | `f2-frontend-auth`, PR [#57](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/57) | Merge `44e9963`; `npm run check` verde; sem fallback de sessão demo |
+| BE-006/T08 — HTTP refresh/logout | Concluído | `f2-session-http`, PR [#55](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/55) | Merge `58bd99a`; `mvn test` com 61 testes; rotação, reuse, expiração e revogação cobertos |
+| FE-005/T08 — Renovação/logout no cliente | Concluído | `f2-frontend-auth`, PR [#58](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/58) | Merge `b02f32b`; `npm run check` verde; refresh atualiza tokens e 401 limpa sessão |
 
 ## Implementação backend
 
@@ -64,6 +66,10 @@ PR #43 foi integrada por squash com o commit `9036eb6bde92a079fbd0ea99f2742ca61c
 
 PR #57 foi integrada por squash com o commit `44e99630df32cb27e1c37d8f23d328dd888920ca`; `npm run check` passou com lint, typecheck, testes e build.
 
+PR #55 foi integrada por squash com o commit `58bd99a931c1c9c51484db239e85af7a299c916e`; `mvn test` passou com 61 testes, incluindo testes HTTP de refresh, logout e resposta 401 sem credencial.
+
+PR #58 foi integrada por squash com o commit `b02f32bd863530d9fca258c0345dae24c91dfc54`; `npm run check` passou com lint, typecheck, testes e build.
+
 ### Database DB-005/DB-006
 
 `make up && make migrate && make test && make down`: PASS. A instalação incremental, o upgrade desde V0001, a idempotência de migrations/seeds e o fluxo sintético de rotação, revogação e uso único foram aprovados.
@@ -79,4 +85,4 @@ O mesmo ciclo foi repetido após DB-006 com `make seed`; os objetos RBAC, constr
 
 ## Próxima etapa
 
-Implementar e validar os endpoints HTTP de refresh rotativo, logout idempotente, recuperação e primeiro acesso; conectar o frontend ao ciclo de renovação/encerramento de sessão e executar E2E contra backend + banco reais. A Fase 2 só deve ser marcada como concluída após esses critérios.
+Implementar o contrato HTTP de recuperação e primeiro acesso com adaptadores reais de conta e entrega, além de executar E2E contra backend + banco reais. A Fase 2 só deve ser marcada como concluída após esses critérios; o núcleo atual não inventa delivery de recuperação nem considera uma validação local como fluxo funcional.
