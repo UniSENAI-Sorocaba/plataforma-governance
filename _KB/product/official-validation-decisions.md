@@ -122,6 +122,33 @@ Detalhes ainda não especificados: escala, precisão e arredondamento, ausência
 
 Detalhes ainda não especificados: relação entre edital, aviso, atividade e projeto; elegibilidade, vagas, inscrições duplicadas, cancelamento, unidade/limites de horas, motivo de recusa e regra de submissão no instante final.
 
+### Decisões de fechamento do MVP — T14 editais e inscrições — 2026-11-20
+
+- **Edital:** é uma entidade própria, distinta de aviso, com título, descrição,
+  publicação/status, janela de inscrição e vínculo opcional a um projeto de
+  Extensão. Avisos não geram editais nem inscrições automaticamente.
+- **Responsabilidade:** coordenação cria, edita, publica e encerra editais;
+  docente responsável pelo projeto pode consultar os inscritos quando o edital
+  estiver vinculado a um projeto. Não haverá edição por aluno.
+- **Elegibilidade:** qualquer aluno autenticado, ativo e com vínculo
+  institucional ativo pode se inscrever. Não haverá filtro adicional de curso,
+  série, desempenho ou turma no MVP.
+- **Vagas:** não haverá limite de vagas nem fila de espera no MVP.
+- **Janela:** `starts_at <= now < ends_at`; instantes são persistidos em UTC e a
+  regra é apresentada no fuso `America/Sao_Paulo`. O servidor usa `Clock`
+  injetável nos testes.
+- **Inscrição:** cada aluno pode ter no máximo uma inscrição por edital. A
+  inscrição é confirmada imediatamente e possui estados `SUBMITTED` ou
+  `WITHDRAWN`; não haverá aprovação manual nem estado de espera neste MVP.
+- **Desistência e reenvio:** o aluno pode desistir somente enquanto a janela
+  estiver aberta. Uma inscrição desistida não pode ser reenviada no mesmo
+  edital; uma nova edição do edital terá novo identificador.
+- **Comunicação:** não haverá e-mail; o estado retornado pela API e exibido na
+  interface é a comunicação oficial.
+- **Concorrência e privacidade:** inscrição duplicada retorna `409 Conflict`,
+  sem nova linha; aluno só consulta as próprias inscrições e dados públicos do
+  edital. Nenhum dado pessoal aparece em listagens públicas.
+
 ## Entregáveis e publicação
 
 - Formatos mencionados para entregas: PDF, DOCX e imagem. O limite de tamanho ainda precisa ser definido.
