@@ -46,7 +46,7 @@ graph TD
    * Gestão de usuários, perfis e níveis de acesso (Aluno, Docente, Coordenação, CPA, Administrador).
    * Sessões seguras e Single Sign-On via JWT (RS256) e OAuth2.
 2. **Projetos Integradores & Extensão Universitária:**
-   * **Captação de Projetos:** Submissão e validação de propostas de projetos integradores e de extensão (incluindo modelos híbridos).
+   * **Captação de Projetos:** Cadastro e publicação de propostas de projetos integradores e de extensão (incluindo modelos híbridos).
    * **Gestão de Equipes/Alunos:** Alocação de estudantes em projetos com acompanhamento de status.
    * **Avaliação Docente:** Módulo para avaliação de desempenho e entregas por professores avaliadores com rubricas.
    * **Cálculo de Horas:** Apuração e controle automatizado de horas de extensão para cumprimento curricular (Resolução CNE).

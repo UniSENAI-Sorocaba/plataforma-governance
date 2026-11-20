@@ -34,7 +34,65 @@ Detalhes ainda não especificados: formato e validação do CSV, tratamento de d
 - Somente docentes podem reabrir ou arquivar projetos.
 - Horas e notas individuais não são públicas; a nota do projeto pode ser pública.
 
-Detalhes ainda não especificados: estados e nomes formais, elegibilidade, vagas, prazos e reabertura de períodos, desistência/reenvio, notificações, critérios para equivalência manual, troca de participantes na virada do semestre e exceções administrativas.
+### Decisões de fechamento do MVP — 2026-11-20
+
+As decisões abaixo fecham os pontos de implementação que estavam abertos para
+o fluxo de propostas e participação:
+
+- **Campos mínimos da proposta:** `title` (5–200 caracteres), `summary`
+  (20–500), `description` (50–5000), `classification`
+  (`PI`, `EXTENSION` ou `BOTH`), `continuity` (`CONTINUOUS` ou `FIXED_END`),
+  `end_date` quando `FIXED_END`, e pelo menos um docente responsável.
+- **Rascunho e publicação:** rascunho exige `title`, `classification`,
+  `continuity` e responsável; publicação exige também `summary`,
+  `description` e `end_date` quando aplicável. Não existe estado
+  intermediário `SUBMITTED` no MVP.
+- **Estados formais:** publicação é `DRAFT` ou `PUBLISHED`; ciclo de vida é
+  `ACTIVE` ou `ARCHIVED`; solicitação é `PENDING`, `APPROVED`, `DENIED` ou
+  `WITHDRAWN`; vínculo aprovado é `ACTIVE` ou `REMOVED`.
+- **Reabrir/arquivar:** somente docente responsável pode executar
+  `ACTIVE → ARCHIVED` e `ARCHIVED → ACTIVE`. Arquivamento bloqueia novas
+  solicitações, edições e publicação pública; vínculos existentes continuam
+  consultáveis. Reabertura não republica automaticamente o projeto.
+- **Elegibilidade:** qualquer aluno autenticado, ativo e vinculado à
+  instituição pode solicitar participação. Não haverá critério adicional de
+  curso, série ou desempenho no MVP.
+- **Vagas:** não haverá limite de vagas no MVP; não criar campo ou regra de
+  lotação.
+- **Desistência e reenvio:** aluno pode retirar uma solicitação `PENDING`
+  enquanto o período estiver aberto. Solicitação `DENIED` ou `WITHDRAWN` não
+  pode ser reenviada no mesmo período; novo pedido só é permitido em período
+  posterior. Participante `REMOVED` também só pode solicitar novamente em
+  período posterior.
+- **Múltiplos responsáveis:** são permitidos um ou mais docentes. Todos os
+  responsáveis possuem escopo para editar campos permitidos, aprovar/negar,
+  remover participantes, arquivar e reabrir. O último responsável não pode ser
+  removido.
+- **Edição após publicação:** enquanto o projeto estiver ativo, responsáveis
+  podem editar título, resumo, descrição, data final futura e autorização de
+  fotos. A publicação não muda implicitamente. Classificação, continuidade e
+  responsáveis só podem ser alterados antes da publicação e antes de qualquer
+  solicitação pendente ou vínculo aprovado. Não há exclusão física de projeto;
+  arquivamento é a operação de encerramento.
+- **Períodos:** coordenação cria e altera períodos de inscrição vinculados ao
+  projeto e ao semestre acadêmico. O início é inclusivo e o fim exclusivo;
+  instantes são persistidos em UTC e avaliados no fuso `America/Sao_Paulo`
+  (UTC-3 para a regra de negócio). Um período aberto satisfaz
+  `start_at <= now < end_at`. Coordenação pode reabrir período encerrado
+  estendendo `end_at`, sem retroagir solicitações.
+- **Virada de semestre:** o vínculo de participação pertence a um semestre;
+  não há migração automática. A participação no novo semestre exige nova
+  solicitação e decisão.
+- **Notificações:** não haverá envio de e-mail no MVP; o estado da solicitação
+  e a resposta da API são a comunicação oficial.
+- **Concorrência:** conflito de aprovação ou solicitação duplicada retorna
+  HTTP `409 Conflict`, não altera o estado e exige nova consulta do recurso.
+- **Exceções:** não haverá bypass administrativo para limites, elegibilidade
+  ou decisões de participação no MVP.
+
+Critérios para equivalência continuam manuais: não criar deduplicação
+automática nem restrição de unicidade entre propostas semanticamente
+equivalentes.
 
 ## Avaliação e bancas
 
