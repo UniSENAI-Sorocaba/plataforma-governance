@@ -1,7 +1,7 @@
 # Evidência de execução — Fase 2
 
-**Data:** 2026-11-20  
-**Status:** sessão HTTP de refresh/logout e integração client-side foram integradas; recuperação/primeiro acesso e E2E contra backend + banco reais ainda impedem o fechamento formal da Fase 2.
+**Data:** 2026-11-21  
+**Status:** concluída no ambiente local integrado; o gate de recuperação/primeiro acesso e E2E contra backend + banco reais foi fechado em 2026-11-21. A configuração de credenciais SMTP de produção continua sendo operação de ambiente, não lacuna de implementação.
 
 ## Escopo concluído
 
@@ -19,6 +19,9 @@
 | FE-004/T07 — Jornada de login | Concluído | `f2-frontend-auth`, PR [#57](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/57) | Merge `44e9963`; `npm run check` verde; sem fallback de sessão demo |
 | BE-006/T08 — HTTP refresh/logout | Concluído | `f2-session-http`, PR [#55](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/55) | Merge `58bd99a`; `mvn test` com 61 testes; rotação, reuse, expiração e revogação cobertos |
 | FE-005/T08 — Renovação/logout no cliente | Concluído | `f2-frontend-auth`, PR [#58](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/58) | Merge `b02f32b`; `npm run check` verde; refresh atualiza tokens e 401 limpa sessão |
+| BE-006/T08 — Entrega SMTP e composição JDBC | Concluído | `f6-be-018-impact-authorization`, PR [#72](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/72) | Merge `b851398`; adapter SMTP configurável, lookup JDBC e composição real do serviço |
+| QA/T08 — E2E identidade integrado | Concluído | `f6-quality-gates`, PR [#68](https://github.com/UniSENAI-Sorocaba/plataforma-quality/pull/68) | Merge `c8efcee`; backend + PostgreSQL + Mailpit reais, ativação, recuperação, reset e single-use |
+| INF/T08 — SMTP local reproduzível | Concluído | `f6-infra-operations-runbook`, PR [#44](https://github.com/UniSENAI-Sorocaba/plataforma-infrastructure/pull/44) | Merge `3708dae`; Mailpit versionado no compose local |
 
 ## Implementação backend
 
@@ -70,6 +73,22 @@ PR #55 foi integrada por squash com o commit `58bd99a931c1c9c51484db239e85af7a29
 
 PR #58 foi integrada por squash com o commit `b02f32bd863530d9fca258c0345dae24c91dfc54`; `npm run check` passou com lint, typecheck, testes e build.
 
+PR #72 foi integrada por squash com o commit `b851398397c746e6e861b1eae7c9bf16a8d79510`; os checks `coverage-gate`, `Maven verify` e `Authorization tests and coverage` passaram.
+
+PR #68 foi integrada por squash com o commit `c8efceed99c7b34d6dd622ce182a7019cfd7af7c`; o cenário `tests/e2e/t07-identity-recovery.mjs` passou contra backend fonte, PostgreSQL real e Mailpit.
+
+PR #44 foi integrada por squash com o commit `3708dae0ad97d427a97d978d95c6952bcad0d703`; o compose local passou a fornecer SMTP sintético reproduzível.
+
+### E2E real de primeiro acesso e recuperação
+
+Execução em 2026-11-21 com `SECURITY_PASSWORD_RECOVERY_DELIVERY=smtp`, backend fonte na porta 18081, PostgreSQL do stack e Mailpit:
+
+```text
+{"health":"passed","firstAccess":"passed","recoveryRequest":"passed","smtpDelivery":"passed","passwordReset":"passed","recoveredLogin":"passed","tokenReuseRejected":"passed"}
+```
+
+O token foi extraído somente em memória da mensagem sintética; não foi gravado em evidência nem impresso no relatório.
+
 ### Database DB-005/DB-006
 
 `make up && make migrate && make test && make down`: PASS. A instalação incremental, o upgrade desde V0001, a idempotência de migrations/seeds e o fluxo sintético de rotação, revogação e uso único foram aprovados.
@@ -83,6 +102,6 @@ O mesmo ciclo foi repetido após DB-006 com `make seed`; os objetos RBAC, constr
 - Validação: `.agents/quality-security-agent.md`.
 - Orquestração: `.agents/orchestrator.md`.
 
-## Próxima etapa
+## Gate de saída
 
-Implementar o contrato HTTP de recuperação e primeiro acesso com adaptadores reais de conta e entrega, além de executar E2E contra backend + banco reais. A Fase 2 só deve ser marcada como concluída após esses critérios; o núcleo atual não inventa delivery de recuperação nem considera uma validação local como fluxo funcional.
+**PASS local:** identidade, credenciais Argon2id, JWT, refresh/logout, RBAC, primeiro acesso e recuperação com entrega SMTP foram validados por testes automatizados e E2E contra PostgreSQL real. O único passo operacional restante é fornecer as credenciais/host SMTP do ambiente de staging/produção antes do deploy, sem alteração de código.
