@@ -25,7 +25,8 @@
 - `npm run check` passou com lint, typecheck, 21 testes e build, incluindo `/robots.txt` e `/sitemap.xml`.
 - `mvn --batch-mode -Dtest=ImpactServiceTest,ApiFoundationWebTest test` passou com 9 testes;
 - `npm run check` do frontend de impactos passou com build da rota `/impactos`.
+- Lighthouse local em `/impactos` (segunda execução): performance 93, acessibilidade 94, SEO 100 e best practices 96.
 
 ## Limitações de aceite
 
-A medição Lighthouse em staging ainda não foi demonstrada. T19, T20 e o SEO estrutural T21 estão implementados; Lighthouse continua dependente de ambiente de staging.
+A medição Lighthouse em staging ainda não foi demonstrada; a medição local atende às metas, mas não substitui staging. T19, T20 e o SEO estrutural T21 estão implementados.
