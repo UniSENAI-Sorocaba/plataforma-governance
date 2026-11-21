@@ -16,6 +16,7 @@
 - E2E real T15 com Playwright contra frontend, backend e PostgreSQL do stack: login, submissão de atividade e total visível aprovados;
 - E2E real T16 com Playwright contra as versões atuais de frontend/backend e PostgreSQL: login de coordenação, atribuição de avaliação e rota visível aprovados;
 - infraestrutura declarativa avançada: módulos reais de network, ECS cluster, ALB, PostgreSQL/RDS, ECR e ECS service; root development agora referencia os módulos integrados, com testes Terraform individuais do MiniStack para rede (2), cluster (1), banco (2 cenários), ECR (1), segredos (2) e storage/ALB/ECS service concluindo o ciclo de provisionamento local;
+- integração do root development: `make init`, `make plan` e `make apply` concluídos contra o MiniStack; aplicação criou 45 recursos, sem alterações ou destruições, e expôs VPC, ALB, endpoint de banco, URLs ECR e bucket S3;
 - IDs sintéticos utilizados: projeto `f0000000-0000-4000-8000-000000000201`, período `f0000000-0000-4000-8000-000000000202`.
 
 Para T16 também foram usados o projeto `f0000000-0000-4000-8000-000000000203`, o período `f0000000-0000-4000-8000-000000000204`, o aluno `b0000000-0000-4000-8000-000000000001` e o avaliador `b0000000-0000-4000-8000-000000000002`.
