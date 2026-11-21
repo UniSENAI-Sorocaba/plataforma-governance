@@ -68,3 +68,7 @@ Converter o MVP funcional em uma V1 implantável, observável, segura e reversí
 - [ ] smoke pós-deploy executado;
 - [ ] aprovação do PO registrada;
 - [ ] decisão go/no-go publicada.
+
+## Estado desta execução
+
+O pacote foi avaliado em 2026-11-21. A decisão atual é **NO-GO controlado**: o MVP local está integrado e validado, mas staging/AWS não estão disponíveis para executar E2E consolidado, Lighthouse, DAST, backup/restore, smoke e rollback. A decisão detalhada, owners e critérios de desbloqueio estão em [F6-go-no-go-2026-11-21.md](./evidence/F6-go-no-go-2026-11-21.md).
