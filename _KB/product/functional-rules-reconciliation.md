@@ -34,7 +34,7 @@ Uma resposta oficial pode exigir revisão de outra documentação e não transfo
 
 **Decisões oficiais:** avisos podem ser gerais ou destinados a um projeto; coordenação gerencia períodos no fuso UTC-3; períodos podem ser alterados; docente responsável define/valida horas; depois de aprovado no projeto, somente docente altera participação; aluno pode corrigir informação até o encerramento; não se aceitam envios atrasados; não manter histórico de horas.
 
-**Conflito interno do caderno:** Q61 diz que cada etapa tem prazo não prorrogável; Q62 diz que o docente pode ajustar prazo. Registrar ambas como fonte oficial e deixar a regra de precedência pendente de esclarecimento do PO, sem escolher uma por inferência.
+**Reconciliação MVP:** Q61 controla o comportamento do participante: o prazo não é prorrogado automaticamente e submissões só são aceitas enquanto `now < ends_at`. Q62 define a exceção administrativa: coordenação pode ajustar apenas `ends_at` para o futuro, inclusive reabrir período encerrado; início e termo permanecem imutáveis e a alteração não tem efeito retroativo.
 
 **Ainda não especificado:** relação entre aviso, edital, atividade e projeto; elegibilidade, vagas, duplicidade, cancelamento, unidade/limites de horas, motivo de recusa, total e regra no instante-limite. Certificados não recebem regras completas no caderno.
 

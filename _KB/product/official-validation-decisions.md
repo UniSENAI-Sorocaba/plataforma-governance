@@ -129,7 +129,7 @@ Detalhes ainda não especificados: relação entre edital, aviso, atividade e pr
 - **Estados:** `SUBMITTED`, `APPROVED` e `REJECTED`. A atividade começa submetida; aprovação exige horas aprovadas; recusa exige motivo não vazio.
 - **Reenvio:** uma atividade recusada pode ser corrigida e reenviada antes do encerramento do período, reutilizando o mesmo registro e substituindo o estado vigente. Não há histórico de negócio.
 - **Recusa:** somente o docente responsável pelo projeto pode aprovar ou rejeitar; coordenação, aluno e outro docente não executam essa decisão.
-- **Prazo:** usa `enrollment_period.ends_at`, comparado como `now < ends_at`; a API persiste instantes UTC e a interface converte para `America/Sao_Paulo`. O MVP não cria ajuste excepcional de prazo enquanto o conflito Q61/Q62 não for resolvido.
+- **Prazo:** usa `enrollment_period.ends_at`, comparado como `now < ends_at`; a API persiste instantes UTC e a interface converte para `America/Sao_Paulo`. Pela decisão MVP de reconciliação Q61/Q62, somente a coordenação pode ajustar `ends_at` para um instante futuro, inclusive reabrir período encerrado; `starts_at` e o termo não mudam, não há extensão automática e não há efeito retroativo.
 - **Totalização:** total do aluno é a soma de `approved_hours` das atividades `APPROVED` do projeto/período; atividades submetidas ou recusadas não entram no total.
 - **Evidência:** o MVP registra título e descrição textual; upload de evidência, notificações e histórico ficam fora de T15.
 
