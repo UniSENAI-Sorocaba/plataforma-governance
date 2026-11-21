@@ -1,6 +1,6 @@
 # Evidências de execução — F4/T14
 
-**Data:** 2026-11-20  
+**Data:** 2026-11-21  
 **Escopo:** T14 — editais e inscrições de Extensão (`BE-009`, `DB-012`, `FE-008`, `QA-012`)
 
 ## Decisões de produto aplicadas
@@ -24,6 +24,7 @@
 - `mvn --batch-mode verify -q` em `plataforma-backend`: 80 testes, gate Maven e coverage-gate aprovados.
 - `npm run check` em `plataforma-frontend`: lint, typecheck, 21 testes e build aprovados.
 - CI GitHub: backend Maven/coverage/authorization, database migration/validate e frontend check concluídos com sucesso.
+- E2E browser real `npm run test:e2e:t14` em `plataforma-quality`, com frontend, backend e PostgreSQL locais: login, edital sintético publicado, inscrição e confirmação visual aprovados. Resultado: `browserE2E=passed`, `login=passed`, `opportunityVisible=true`, `applicationSubmission=passed`, `enrolledOpportunityVisible=true`.
 
 ## Aceite T14
 
@@ -35,8 +36,9 @@ Janela, elegibilidade, duplicidade, desistência e limite de fronteira foram cob
 - Database: PR [#47](https://github.com/UniSENAI-Sorocaba/plataforma-database/pull/47), merge `5ffa75c`.
 - Backend: PR [#63](https://github.com/UniSENAI-Sorocaba/plataforma-backend/pull/63), merge `085e6af`.
 - Frontend: PR [#65](https://github.com/UniSENAI-Sorocaba/plataforma-frontend/pull/65), merge `fdcb606`.
+- Quality: PR [#69](https://github.com/UniSENAI-Sorocaba/plataforma-quality/pull/69), merge `40653f9`.
 
 ## Limitações
 
-- O E2E browser específico de T14 ainda depende de dados sintéticos de edital publicado; o E2E de T13 foi executado anteriormente contra os serviços reais.
+- O E2E browser de T14 foi executado com o fixture sintético `b0000000-0000-4000-8000-000000000401` (`Oficinas de Prototipagem Comunitária`); a inscrição deve ser removida antes de uma nova execução idempotente.
 - T15 — atividades e horas — implementada e evidenciada em [F4-T15-execution-2026-11-20.md](./F4-T15-execution-2026-11-20.md).
