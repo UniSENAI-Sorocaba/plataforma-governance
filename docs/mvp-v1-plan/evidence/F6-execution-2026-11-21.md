@@ -9,11 +9,15 @@
 - `make up && make test-all`: 19 testes Terraform do MiniStack aprovados nos módulos database, ecs-cluster, ecs-service, load-balancer, network, registry, secrets e storage;
 - `npm test` em `plataforma-quality`: testes estruturais aprovados;
 - E2E real T15 com Playwright contra frontend, backend e PostgreSQL do stack: login, submissão de atividade e total visível aprovados;
+- E2E real T16 com Playwright contra as versões atuais de frontend/backend e PostgreSQL: login de coordenação, atribuição de avaliação e rota visível aprovados;
 - IDs sintéticos utilizados: projeto `f0000000-0000-4000-8000-000000000201`, período `f0000000-0000-4000-8000-000000000202`.
+
+Para T16 também foram usados o projeto `f0000000-0000-4000-8000-000000000203`, o período `f0000000-0000-4000-8000-000000000204`, o aluno `b0000000-0000-4000-8000-000000000001` e o avaliador `b0000000-0000-4000-8000-000000000002`.
 
 ## Integração
 
 - Quality PR #65 mergeado após correção de prontidão do navegador (`domcontentloaded` + espera explícita do formulário).
+- Quality PR #66 mergeado após a mesma estabilização de prontidão aplicada ao cenário T16.
 - Dados de E2E são sintéticos e não incluem credenciais reais.
 
 ## Limitações de release
