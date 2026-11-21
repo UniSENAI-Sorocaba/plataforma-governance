@@ -40,7 +40,7 @@ Aluno e docente visualizam estado e total correto.
 - Estados formais: `SUBMITTED`, `APPROVED`, `REJECTED`; recusa exige motivo e aprovação exige horas aprovadas.
 - Reenvio de atividade recusada é permitido antes do encerramento do período e substitui o registro atual, sem histórico.
 - Duplicidade é a mesma combinação de projeto, período, aluno e título normalizado.
-- O prazo é o `ends_at` do período, com fronteira final exclusiva; o ajuste excepcional permanece bloqueado até resolução de Q61/Q62.
+- O prazo é o `ends_at` do período, com fronteira final exclusiva. Pela reconciliação Q61/Q62, somente coordenação pode ajustar `ends_at` para o futuro, inclusive reabrir período encerrado; não há extensão automática, alteração de início ou efeito retroativo.
 
 ## Evidência
 
