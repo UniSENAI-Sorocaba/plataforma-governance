@@ -15,6 +15,7 @@
 - `npm audit --audit-level=high` do frontend passou com 0 vulnerabilidades após atualização para Next.js 16.4.6;
 - E2E real T15 com Playwright contra frontend, backend e PostgreSQL do stack: login, submissão de atividade e total visível aprovados;
 - E2E real T16 com Playwright contra as versões atuais de frontend/backend e PostgreSQL: login de coordenação, atribuição de avaliação e rota visível aprovados;
+- infraestrutura declarativa avançada: módulos reais de network, ECS cluster, ALB, PostgreSQL/RDS, ECR e ECS service; root development agora referencia os módulos integrados, com testes Terraform individuais do MiniStack para rede (2), cluster (1), banco (2 cenários), ECR (1), segredos (2) e storage/ALB/ECS service concluindo o ciclo de provisionamento local;
 - IDs sintéticos utilizados: projeto `f0000000-0000-4000-8000-000000000201`, período `f0000000-0000-4000-8000-000000000202`.
 
 Para T16 também foram usados o projeto `f0000000-0000-4000-8000-000000000203`, o período `f0000000-0000-4000-8000-000000000204`, o aluno `b0000000-0000-4000-8000-000000000001` e o avaliador `b0000000-0000-4000-8000-000000000002`.
@@ -27,4 +28,4 @@ Para T16 também foram usados o projeto `f0000000-0000-4000-8000-000000000203`, 
 
 ## Limitações de release
 
-Não foram executados contra AWS real: k6 propriamente dito, DAST/containers em registry de produção, backup/restore de RDS, smoke de deploy e rollback. O cenário k6 está versionado e a meta foi exercitada localmente por harness HTTP equivalente; isso não substitui o aceite AWS. Os runbooks estão preparados, mas a conta AWS, staging e domínio não estão disponíveis neste ambiente. O go/no-go de V1 permanece bloqueado por essas evidências externas e pela medição Lighthouse/staging.
+Não foram executados contra AWS real: k6 propriamente dito, DAST/containers em registry de produção, backup/restore de RDS, smoke de deploy e rollback. O cenário k6 está versionado e a meta foi exercitada localmente por harness HTTP equivalente; isso não substitui o aceite AWS. Os módulos declarativos e o root development foram validados no MiniStack, mas aplicação em production continua dependente de credenciais AWS/OIDC, conta e domínio. Os runbooks estão preparados, mas a conta AWS, staging e domínio não estão disponíveis neste ambiente. O go/no-go de V1 permanece bloqueado por essas evidências externas e pela medição Lighthouse/staging.
