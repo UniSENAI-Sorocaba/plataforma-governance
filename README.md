@@ -24,9 +24,11 @@ As decisões completas estão nos ADRs da [`_KB`](_KB/README.md).
 ## Documentação e execução
 
 - Fonte normativa: [`_KB/README.md`](_KB/README.md)
+- Decisões de fechamento do MVP: [`_KB/product/mvp-decisions-2026-11-21.md`](_KB/product/mvp-decisions-2026-11-21.md)
 - Configuração GitHub: [`GITHUB_CONFIGURATION.md`](GITHUB_CONFIGURATION.md)
 - Backlogs por equipe: [`BACKLOG_BY_TEAM.md`](BACKLOG_BY_TEAM.md)
 - Plano de implementação MVP/V1: [`docs/mvp-v1-plan/README.md`](docs/mvp-v1-plan/README.md)
+- Revisão de produto, experiências por usuário e plano de correção/evolução: [`docs/product-review/2026-11-21-mvp-futuro-experiencias-e-plano.md`](docs/product-review/2026-11-21-mvp-futuro-experiencias-e-plano.md)
 - Relatório de migração: [`_KB_MIGRATION_REPORT.md`](_KB_MIGRATION_REPORT.md)
 - Baseline histórica: [`_KB/archive/legacy-2026-09-09/`](_KB/archive/legacy-2026-09-09/)
 - Automação administrativa do GitHub: [`github_admin/README.md`](github_admin/README.md)
